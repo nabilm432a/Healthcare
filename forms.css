@@ -1,0 +1,13 @@
+.form div {
+    display: flex;
+    justify-content: space-between;
+}
+.form label {
+    flex-basis: 30%;
+}
+.form input {
+    flex-basis: 60%;
+}
+.form {
+    margin-top: 70px;
+}
