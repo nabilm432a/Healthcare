@@ -56,7 +56,9 @@ h2 {
     background-color: rgb(80, 208, 255);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
+#topnav a:active {
+    background-color: white;
+}
 .wrapper {
     max-width: 1400px;
     padding: 0px 4vw;
@@ -158,4 +160,7 @@ h2 {
 .formsubmit:hover, .article-one button:hover {
     background-color: rgb(215, 215, 215);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.formsubmit:active, .article-one button:active {
+    background-color: white;
 }
