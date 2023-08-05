@@ -14,69 +14,71 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
 
 <body>
     <div class="container">
-        <header class="header-main">
-            <div class="wrapper">
-                <section class="logo">
-                    <h1>Healthcare Appointment System</h1>
-                </section>
-                <nav class="nav-horizontal" id="topnav">
-                    <a href="index.php">Home</a>
-                    <a href="d_admission.php" title="Join our appointment system as a doctor">Join</a>
-                </nav>
-            </div>
-        </header>
-        <main>
-            <article class="article-one">
-                <h1>Making an Appointment</h1>
-                <p>Please ensure you have admitted to our services, otherwise you will not be able to make an appointment</p>
-                <div class="formwrap">
-                    <form action="insert_d.php" method="post" class="form">
-                        <div>
-                            <label for="name">Name: </label>
-                            <input type="text" name="name" required/><br><br>
-                        </div>
-                        <div>
-                            <label for="id">ID: </label>
-                            <input type="number" name="id" required/><br><br>
-                        </div>
-                        <div>
-                            <label for="doctor">Doctor: </label>
-                            <select style="width: 871px;" name="doctor" id="doctor">
-                                <?php
-                                require_once('connect.php');
-                                $sql = 'SELECT name from doctor';
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $nameValue = $row["name"];
-                                        $displayText = "Dr. " . $nameValue;
-                                        echo "<option value='" . $nameValue . "'>" . $displayText . "</option>";
-                                    }
-                                } else {
-                                    echo "<option>No Doctors Available</option>";
-                                }
-                                $conn->close();
-                                ?>
-                            </select><br><br>
-                        </div>
-                        <div>
-                            <label for="test">Test: </label>
-                            <input type="text" name="test" required/><br><br>
-                        </div>
-                        <div>
-                            <label for="hospital">Hospital: </label>
-                            <input type="text" name="hospital" required/><br><br>
-                        </div>
-                        
-                        <input type="submit" class="formsubmit" value="Submit"/>
-                    </form>
-                    <div class="msg">
-                        <p><?php echo $message; ?></p>
-                    </div>
+        <div class="main-content">
+            <header class="header-main">
+                <div class="wrapper">
+                    <section class="logo">
+                        <h1>Healthcare Appointment System</h1>
+                    </section>
+                    <nav class="nav-horizontal" id="topnav">
+                        <a href="index.php">Home</a>
+                        <a href="d_admission.php" title="Join our appointment system as a doctor">Join</a>
+                    </nav>
                 </div>
-            </article>
+            </header>
+            <main>
+                <article class="article-one">
+                    <h1>Making an Appointment</h1>
+                    <p>Please ensure you have admitted to our services, otherwise you will not be able to make an appointment</p>
+                    <div class="formwrap">
+                        <form action="insert_d.php" method="post" class="form">
+                            <div>
+                                <label for="name">Name: </label>
+                                <input type="text" name="name" required/><br><br>
+                            </div>
+                            <div>
+                                <label for="id">ID: </label>
+                                <input type="number" name="id" required/><br><br>
+                            </div>
+                            <div>
+                                <label for="doctor">Doctor: </label>
+                                <select name="doctor" id="doctor">
+                                    <?php
+                                    require_once('connect.php');
+                                    $sql = 'SELECT name from doctor';
+                                    $result = $conn->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $nameValue = $row["name"];
+                                            $displayText = "Dr. " . $nameValue;
+                                            echo "<option value='" . $nameValue . "'>" . $displayText . "</option>";
+                                        }
+                                    } else {
+                                        echo "<option>No Doctors Available</option>";
+                                    }
+                                    $conn->close();
+                                    ?>
+                                </select><br><br>
+                            </div>
+                            <div>
+                                <label for="test">Test: </label>
+                                <input type="text" name="test" required/><br><br>
+                            </div>
+                            <div>
+                                <label for="hospital">Hospital: </label>
+                                <input type="text" name="hospital" required/><br><br>
+                            </div>
+                            
+                            <input type="submit" class="formsubmit" value="Submit"/>
+                        </form>
+                        <div class="msg">
+                            <p><?php echo $message; ?></p>
+                        </div>
+                    </div>
+                </article>
 
-        </main>
+            </main>
+        </div>
 
         <footer class="footer-main">
             <div class="wrapper">

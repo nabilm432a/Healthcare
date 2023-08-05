@@ -11,3 +11,11 @@
 .form {
     margin-top: 70px;
 }
+.input-container {
+    width: 100%;
+    max-width: 918px;
+}
+.form select {
+    flex-basis: 60%;
+    box-sizing: border-box;
+}
