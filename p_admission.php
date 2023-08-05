@@ -43,7 +43,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
 
                     <div>
                         <label for="gender">Gender: </label>
-                        <select style="width: 818px;" name="gender" id="gender">
+                        <select style="width: 1150px;" name="gender" id="gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select><br><br>
@@ -51,7 +51,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
 
                     <div>
                         <label for="bloodgroup">Choose a Blood Group:</label>
-                        <select style="width: 818px;" name="bloodgroup" id="bloodgroup">
+                        <select style="width: 1150px;" name="bloodgroup" id="bloodgroup">
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
                             <option value="B+">B+</option>
