@@ -58,7 +58,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                 <div class="inp">
                                     <label for="Contact">Contact number: </label>
                                     <div class="input-container">
-                                        <input type="number" name="contact" required/><br><br>
+                                        <input type="tel" name="contact" pattern="[0-9]{11}" required/><br><br>
                                     </div>
                                 </div>
                                 
