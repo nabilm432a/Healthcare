@@ -26,8 +26,7 @@
                 <div class="wrapper2">
                     <article class="article-two">
                         <header>
-                            <h2>This Project was designed by</h2>
-                            <p style="text-decoration:underline;">This project was created by:</p>
+                            <h2 style="text-decoration: underline;">This Project was designed by</h2>
                             <h3>Group - 4</h3>
                             <p style="margin-left: 10px;">&#9728; Avishek Paul</p>
                             <p style="margin-left: 10px;">&#9728; Mitul Roy Tanny</p>
