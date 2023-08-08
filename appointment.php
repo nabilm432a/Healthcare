@@ -34,39 +34,49 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                         <form action="insert_d.php" method="post" class="form">
                             <div>
                                 <label for="name">Name: </label>
-                                <input type="text" name="name" required/><br><br>
+                                <div class="input-container">
+                                    <input type="text" name="name" required/><br><br>
+                                </div>
                             </div>
                             <div>
                                 <label for="id">ID: </label>
-                                <input type="number" name="id" required/><br><br>
+                                <div class="input-container">
+                                    <input type="number" name="id" required/><br><br>
+                                </div>
                             </div>
                             <div>
                                 <label for="doctor">Doctor: </label>
-                                <select name="doctor" id="doctor">
-                                    <?php
-                                    require_once('connect.php');
-                                    $sql = 'SELECT name from doctor';
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            $nameValue = $row["name"];
-                                            $displayText = "Dr. " . $nameValue;
-                                            echo "<option value='" . $nameValue . "'>" . $displayText . "</option>";
+                                <div class="input-container">
+                                    <select name="doctor" id="doctor">
+                                        <?php
+                                        require_once('connect.php');
+                                        $sql = 'SELECT name from doctor';
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $nameValue = $row["name"];
+                                                $displayText = "Dr. " . $nameValue;
+                                                echo "<option value='" . $nameValue . "'>" . $displayText . "</option>";
+                                            }
+                                        } else {
+                                            echo "<option>No Doctors Available</option>";
                                         }
-                                    } else {
-                                        echo "<option>No Doctors Available</option>";
-                                    }
-                                    $conn->close();
-                                    ?>
-                                </select><br><br>
+                                        $conn->close();
+                                        ?>
+                                    </select><br><br>
+                                </div>
                             </div>
                             <div>
                                 <label for="test">Test: </label>
-                                <input type="text" name="test" required/><br><br>
+                                <div class="input-container">
+                                    <input type="text" name="test" required/><br><br>
+                                </div>
                             </div>
                             <div>
                                 <label for="hospital">Hospital: </label>
-                                <input type="text" name="hospital" required/><br><br>
+                                <div class="input-container">
+                                    <input type="text" name="hospital" required/><br><br>
+                                </div>
                             </div>
                             
                             <input type="submit" class="formsubmit" value="Submit"/>

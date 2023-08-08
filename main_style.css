@@ -1,7 +1,7 @@
 body {
     padding-top: 50px;
     font-family: 'Montserrat', sans-serif;
-    background-image: url(assets/26807.jpg);
+    background-image: url(assets/26363.png);
     background-size: cover;
 }
 
@@ -49,11 +49,12 @@ h2 {
     color: black;
     text-decoration: none;
     margin-right: 8px;
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
 }
 
 #topnav a:hover {
-    background-color: rgb(80, 208, 255);
+    background-color: rgb(150, 194, 187);
+    color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 #topnav a:active {
@@ -66,17 +67,13 @@ h2 {
 }
 
 .wrapbox {
-    background-color: rgb(196, 238, 252);
+    background-color: rgb(139, 190, 182);
     border-radius: 8px;
     width: 80%;
     margin-top: 70px;
     margin-left: 70px;
 }
-.formwrap {
-    background-color: rgb(196, 238, 252);
-    border-radius: 8px;
-    padding: 40px;
-}
+
 .logo {
     display: flex;
     align-items: center;
@@ -99,17 +96,20 @@ h2 {
     flex-wrap: wrap;
 }
 .main-content {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-bottom: 50px;
+    margin-bottom: 100px;
 }
 .footer-main {
     background-image: url("assets/v870-tang-36.jpg");
-    padding: 0.1rem 0px;
-    margin-top: auto;
-    width: 100%;
-    overflow: hidden;
+    opacity: 0%;
     border-radius: 8px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity 0.5s ease;
+}
+.footer-main:hover {
+    opacity: 100%;
 }
 
 .footer-main .wrapper {
@@ -129,7 +129,7 @@ h2 {
 }
 
 .footer-main a:hover {
-    color:rgb(80, 208, 255);
+    color:rgb(150, 194, 187);
 }
 
 .article-one header {
@@ -168,3 +168,4 @@ h2 {
 .formsubmit:active, .article-one button:active {
     background-color: white;
 }
+

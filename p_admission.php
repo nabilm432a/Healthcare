@@ -31,61 +31,63 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 <article class="article-one">
                     <h1>Enter your details: </h1>
                     <p>Only by registering as a patient you will be able to make use of our services.</p>
-                    <p>Please enter all the fields accurately and do not leave anything blank.</p>
-                    <form action="patient_entry.php" method="post" class="form">
-                        <div>
-                            <label for="name">Name: </label>
-                            <div class="input-container">
-                                <input type="text" name="name" required/><br><br>
+                    <div class="formwrap">
+                        <form action="patient_entry.php" method="post" class="form">
+                            <div>
+                                <label for="name">Name: </label>
+                                <div class="input-container">
+                                    <input type="text" name="name" required/><br><br>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <label for="age">Age: </label>
-                            <div class="input-container">
-                                <input type="number" name="age" required/><br><br>
+                            <div>
+                                <label for="age">Age: </label>
+                                <div class="input-container">
+                                    <input type="number" name="age" required/><br><br>
+                                </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <label for="gender">Gender: </label>
-                            <div class="input-container">
-                                <select name="gender" id="gender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select><br><br>
+                            <div>
+                                <label for="gender">Gender: </label>
+                                <div class="input-container">
+                                    <select name="gender" id="gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select><br><br>
+                                </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <label for="bloodgroup">Choose a Blood Group:</label>
-                            <div class="input-container">
-                                <select name="bloodgroup" id="bloodgroup">
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
-                                </select><br><br>
+                            <div>
+                                <label for="bloodgroup">Choose a Blood Group:</label>
+                                <div class="input-container">
+                                    <select name="bloodgroup" id="bloodgroup">
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select><br><br>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <label for="Contact">Contact number: </label>
-                            <div class="input-container">
-                                <input type="number" name="contact" required/><br><br>
+                            <div>
+                                <label for="Contact">Contact number: </label>
+                                <div class="input-container">
+                                    <input type="number" name="contact" required/><br><br>
+                                </div>
                             </div>
+                            
+                            <input type="submit" class="formsubmit" value="Submit"/>
+                        </form>
+                        <div class="msg">
+                            <p><?php echo $message; ?></p>
                         </div>
-                        
-                        <input type="submit" class="formsubmit" value="Submit"/>
-                    </form>
-                    <div class="msg">
-                        <p><?php echo $message; ?></p>
-                    </div>
+                    
                 
-                    <div class="currentpatients">
-                        <a href="patients_list.php"><button type="Button">Click here to check current patients</button></a>
+                        <div class="currentpatients">
+                            <a href="patients_list.php"><button type="Button">Click here to check current patients</button></a>
+                        </div>
                     </div>
 
                 </article>
