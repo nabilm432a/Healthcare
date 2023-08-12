@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2023 at 05:58 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Aug 12, 2023 at 06:50 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `doctor` (
   `degree` varchar(30) NOT NULL,
   `specialization` varchar(30) NOT NULL,
   `contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor`
@@ -43,6 +43,55 @@ CREATE TABLE `doctor` (
 INSERT INTO `doctor` (`id`, `name`, `age`, `degree`, `specialization`, `contact`) VALUES
 (00001, 'Gary', 45, 'Medical Sciences', '', '02919964000'),
 (00002, 'Lee', 48, 'PhD', '', '01733568870');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_appointment`
+--
+
+CREATE TABLE `doctor_appointment` (
+  `patient_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `doctor_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `time` datetime NOT NULL,
+  `fee` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_works_at`
+--
+
+CREATE TABLE `doctor_works_at` (
+  `doctor_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `hospital_name` varchar(40) NOT NULL,
+  `hospital_address` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hospital`
+--
+
+CREATE TABLE `hospital` (
+  `Name` varchar(40) NOT NULL,
+  `Address` varchar(60) NOT NULL,
+  `Contact` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hospital_test`
+--
+
+CREATE TABLE `hospital_test` (
+  `hospital_name` varchar(40) NOT NULL,
+  `hospital_address` varchar(60) NOT NULL,
+  `test_name` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,7 +106,7 @@ CREATE TABLE `patient` (
   `gender` enum('Male','Female') NOT NULL,
   `bloodgroup` varchar(3) NOT NULL,
   `contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patient`
@@ -77,6 +126,29 @@ INSERT INTO `patient` (`id`, `name`, `age`, `gender`, `bloodgroup`, `contact`) V
 (00019, 'Ray', 12, 'Male', 'AB-', '01778988765'),
 (00020, 'Lex', 27, 'Male', 'O+', '01222334567');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `Name` varchar(40) NOT NULL,
+  `Fee` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_appointment`
+--
+
+CREATE TABLE `test_appointment` (
+  `patient_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `test_name` varchar(40) NOT NULL,
+  `payment_status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -88,10 +160,46 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `doctor_appointment`
+--
+ALTER TABLE `doctor_appointment`
+  ADD PRIMARY KEY (`patient_id`,`doctor_id`);
+
+--
+-- Indexes for table `doctor_works_at`
+--
+ALTER TABLE `doctor_works_at`
+  ADD PRIMARY KEY (`doctor_id`,`hospital_name`,`hospital_address`);
+
+--
+-- Indexes for table `hospital`
+--
+ALTER TABLE `hospital`
+  ADD PRIMARY KEY (`Name`,`Address`);
+
+--
+-- Indexes for table `hospital_test`
+--
+ALTER TABLE `hospital_test`
+  ADD PRIMARY KEY (`hospital_name`,`hospital_address`,`test_name`);
+
+--
 -- Indexes for table `patient`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`Name`);
+
+--
+-- Indexes for table `test_appointment`
+--
+ALTER TABLE `test_appointment`
+  ADD PRIMARY KEY (`patient_id`,`test_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
