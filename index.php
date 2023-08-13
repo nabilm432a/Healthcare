@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Healthcare</title>
     <link rel="stylesheet" href="main_style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
+    <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="updateGreeting()">
     <div class="container">
         <div class="main-content">
             <header class="header-main">
@@ -24,7 +26,7 @@
                 <div class="wrapbox">
                     <article class="article-one">
                         <header>
-                            <h2>Healthcare Appointment System</h2>
+                            <h2 id="greeting">Greetings</h2>
                             <p>Access healthcare appointments from anywhere!</p>
                             <a href="appointment.php"><button type="button">Make an Appointment</button></a>
                             <h2>Patient Admission</h2>

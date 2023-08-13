@@ -67,11 +67,11 @@ h2 {
 }
 
 .wrapbox {
-    background-color: rgb(139, 190, 182);
     border-radius: 8px;
     width: 80%;
     margin-top: 70px;
     margin-left: 70px;
+    padding: 2rem;
 }
 
 .logo {
