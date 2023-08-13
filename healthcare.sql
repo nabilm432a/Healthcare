@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 06:50 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Aug 13, 2023 at 04:17 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `appointment`
+--
+
+CREATE TABLE `appointment` (
+  `patient_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `doctor_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `test_name` varchar(40) NOT NULL,
+  `total_charge` float NOT NULL,
+  `time` time NOT NULL,
+  `payment_status` enum('Yes','No') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctor`
 --
 
@@ -34,28 +49,14 @@ CREATE TABLE `doctor` (
   `degree` varchar(30) NOT NULL,
   `specialization` varchar(30) NOT NULL,
   `contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `doctor`
 --
 
 INSERT INTO `doctor` (`id`, `name`, `age`, `degree`, `specialization`, `contact`) VALUES
-(00001, 'Gary', 45, 'Medical Sciences', '', '02919964000'),
-(00002, 'Lee', 48, 'PhD', '', '01733568870');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doctor_appointment`
---
-
-CREATE TABLE `doctor_appointment` (
-  `patient_id` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `doctor_id` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `time` datetime NOT NULL,
-  `fee` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(00003, 'Tanny', 22, 'Medical Sciences', '', '01566457881');
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,7 @@ CREATE TABLE `doctor_works_at` (
   `doctor_id` int(5) UNSIGNED ZEROFILL NOT NULL,
   `hospital_name` varchar(40) NOT NULL,
   `hospital_address` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,7 @@ CREATE TABLE `hospital` (
   `Name` varchar(40) NOT NULL,
   `Address` varchar(60) NOT NULL,
   `Contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE `hospital_test` (
   `hospital_name` varchar(40) NOT NULL,
   `hospital_address` varchar(60) NOT NULL,
   `test_name` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -104,9 +105,9 @@ CREATE TABLE `patient` (
   `name` varchar(30) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` enum('Male','Female') NOT NULL,
-  `bloodgroup` varchar(3) NOT NULL,
+  `bloodgroup` enum('A+','A-','B+','B-','AB+','AB-','O+','O-') NOT NULL,
   `contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `patient`
@@ -135,23 +136,19 @@ INSERT INTO `patient` (`id`, `name`, `age`, `gender`, `bloodgroup`, `contact`) V
 CREATE TABLE `test` (
   `Name` varchar(40) NOT NULL,
   `Fee` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `test_appointment`
---
-
-CREATE TABLE `test_appointment` (
-  `patient_id` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `test_name` varchar(40) NOT NULL,
-  `payment_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`patient_id`,`doctor_id`,`test_name`),
+  ADD KEY `fk_docid` (`doctor_id`),
+  ADD KEY `fk_test` (`test_name`);
 
 --
 -- Indexes for table `doctor`
@@ -160,16 +157,11 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `doctor_appointment`
---
-ALTER TABLE `doctor_appointment`
-  ADD PRIMARY KEY (`patient_id`,`doctor_id`);
-
---
 -- Indexes for table `doctor_works_at`
 --
 ALTER TABLE `doctor_works_at`
-  ADD PRIMARY KEY (`doctor_id`,`hospital_name`,`hospital_address`);
+  ADD PRIMARY KEY (`doctor_id`,`hospital_name`,`hospital_address`),
+  ADD KEY `fk_hospitalname_addr` (`hospital_name`,`hospital_address`);
 
 --
 -- Indexes for table `hospital`
@@ -181,7 +173,8 @@ ALTER TABLE `hospital`
 -- Indexes for table `hospital_test`
 --
 ALTER TABLE `hospital_test`
-  ADD PRIMARY KEY (`hospital_name`,`hospital_address`,`test_name`);
+  ADD PRIMARY KEY (`hospital_name`,`hospital_address`,`test_name`),
+  ADD KEY `fk_hospitaltest` (`test_name`);
 
 --
 -- Indexes for table `patient`
@@ -196,12 +189,6 @@ ALTER TABLE `test`
   ADD PRIMARY KEY (`Name`);
 
 --
--- Indexes for table `test_appointment`
---
-ALTER TABLE `test_appointment`
-  ADD PRIMARY KEY (`patient_id`,`test_name`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -209,13 +196,39 @@ ALTER TABLE `test_appointment`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
   MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD CONSTRAINT `fk_docid` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_patid` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_test` FOREIGN KEY (`test_name`) REFERENCES `test` (`Name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `doctor_works_at`
+--
+ALTER TABLE `doctor_works_at`
+  ADD CONSTRAINT `fk_hospitalname_addr` FOREIGN KEY (`hospital_name`,`hospital_address`) REFERENCES `hospital` (`Name`, `Address`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_workdocid` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `hospital_test`
+--
+ALTER TABLE `hospital_test`
+  ADD CONSTRAINT `fk_hospitaln_a` FOREIGN KEY (`hospital_name`,`hospital_address`) REFERENCES `hospital` (`Name`, `Address`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_hospitaltest` FOREIGN KEY (`test_name`) REFERENCES `test` (`Name`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

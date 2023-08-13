@@ -32,7 +32,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                     <h1>Making an Appointment</h1>
                     <p>Please ensure you have admitted to our services, otherwise you will not be able to make an appointment</p>
                     <div class="formwrap">
-                        <form action="insert_d.php" method="post" class="form">
+                        <form action="#" method="post" class="form">
                             <div>
                                 <label for="name">Name: </label>
                                 <div class="input-container">
@@ -71,12 +71,6 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                 <label for="test">Test: </label>
                                 <div class="input-container">
                                     <input type="text" name="test" required/><br><br>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="hospital">Hospital: </label>
-                                <div class="input-container">
-                                    <input type="text" name="hospital" required/><br><br>
                                 </div>
                             </div>
                             
