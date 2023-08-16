@@ -6,7 +6,7 @@
     $gender = $_POST['gender'];
     $blood = $_POST['bloodgroup'];
     $contact = $_POST['contact'];
-    $pass = $_POST['password'];
+    $password = $_POST['password'];
 
     
     $sql = "INSERT INTO patient (name, age, gender, bloodgroup, contact, password) VALUES ('$name', '$age', '$gender', '$blood', '$contact', '$password')";

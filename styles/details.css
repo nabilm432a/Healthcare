@@ -1,0 +1,14 @@
+.article-one {
+    margin-bottom: 100px;
+    width: 60%;
+}
+
+.article-one .patient {
+    border: 2px solid white;
+}
+.article-one .patient .piece {
+    margin-left: 60px;
+}
+#app {
+    margin-top: 50px;
+}

@@ -31,7 +31,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                     <h1>Enter your details: </h1>
                     <div class="doctorform">
                         <div class="formwrap">
-                            <form action="doctor_join.php" method="post" class="form">
+                            <form action="doctor_loginscript.php" method="post" class="form">
                                 <div class="inp">
                                     <label for="id">ID: </label>
                                     <div class="input-container">
@@ -46,9 +46,6 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                 </div>
                                 <input type="submit" class="formsubmit" value="Enter"/>
                             </form>
-                            <div class="msg">
-                                <p><?php echo $message; ?></p>
-                            </div>
                         </div>
                     </div>
                 </article>

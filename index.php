@@ -26,10 +26,9 @@
             <main>
                 <div class="wrapbox">
                     <article class="article-one">
-                        <header>
-                            <h2 id="greeting">Greetings</h2>
+                        <header id="mainhead">
+                            <h2 style="font-size: 3rem;" id="greeting">Greetings</h2>
                             <p>Access healthcare appointments from anywhere!</p>
-                            <a href="appointment.php"><button type="button">Make an Appointment</button></a>
                         </header>
                     </article>
                 </div>
