@@ -31,7 +31,7 @@
                                 <div class="inp">
                                     <label for="id">ID: </label>
                                     <div class="input-container">
-                                        <input type="text" name="id" required/><br><br>
+                                        <input type="text" name="id" maxlength="5" required/><br><br>
                                     </div>
                                 </div>
                                 <div class="inp">
