@@ -4,7 +4,7 @@
     $name = $_POST['name'];
     $age = $_POST['age'];
     $degree = $_POST['degree'];
-    $spec = $_POST['specialization'];
+    $spec = $_POST['spec'];
     $contact = $_POST['contact'];
     $password = $_POST['password'];
 

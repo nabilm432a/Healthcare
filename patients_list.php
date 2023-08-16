@@ -29,10 +29,6 @@
                         <tr>
                             <th class="no-select">ID</th>
                             <th class="no-select">Name</th>
-                            <th class="no-select">Age</th>
-                            <th class="no-select">Gender</th>
-                            <th class="no-select">Blood Group</th>
-                            <th class="no-select">Contact</th>
                         </tr>
                         <?php
                         require_once("php_scripts/connect.php");
@@ -44,10 +40,6 @@
                                 echo "<tr>";
                                 echo "<td style='padding: 10px;'>" . $row["id"] . "</td>";
                                 echo "<td style='padding: 10px;'>" . $row["name"] . "</td>";
-                                echo "<td style='padding: 10px;'>" . $row["age"] . "</td>";
-                                echo "<td style='padding: 10px;'>" . $row["gender"] . "</td>";
-                                echo "<td style='padding: 10px;'>" . $row["bloodgroup"] . "</td>";
-                                echo "<td style='padding: 10px;'>" . $row["contact"] . "</td>";
                                 echo "</tr>";
                             }
                         } else {
