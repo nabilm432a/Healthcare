@@ -37,7 +37,7 @@
                                 <div class="inp">
                                     <label for="password">Password: </label>
                                     <div class="input-container">
-                                        <input type="text" name="password" required/><br><br>
+                                        <input type="password" name="password" required/><br><br>
                                     </div>
                                 </div>
                                 <input type="submit" class="formsubmit" value="Enter"/>
