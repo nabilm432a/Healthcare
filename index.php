@@ -18,7 +18,8 @@
                         <h1>Healthcare Appointment System</h1>
                     </section>
                     <nav class="nav-horizontal" id="topnav">
-                        <a href="d_admission.php" title="Join our appointment system as a doctor">Join</a>
+                        <a href="sign_up.php">Sign Up</a>
+                        <a href="login.php">Login</a>
                     </nav>
                 </div>
             </header>
@@ -29,9 +30,6 @@
                             <h2 id="greeting">Greetings</h2>
                             <p>Access healthcare appointments from anywhere!</p>
                             <a href="appointment.php"><button type="button">Make an Appointment</button></a>
-                            <h2>Patient Admission</h2>
-                            <p>If you are not already admitted to our services, admit now!</p>
-                            <a href="p_admission.php"><button type="button">Patient Admission</button></a>
                         </header>
                     </article>
                 </div>

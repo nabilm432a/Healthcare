@@ -24,6 +24,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
                         <a href="d_admission.php" title="Join our appointment system as a doctor">Join</a>
+                        <a href="#">Login</a>
                     </nav>
                 </div>
             </header>

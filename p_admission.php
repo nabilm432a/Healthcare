@@ -77,7 +77,12 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                     <input type="tel" name="contact" pattern="[0-9]{11}" required/><br><br>
                                 </div>
                             </div>
-                            
+                            <div class="inp">
+                                <label for="password">Password: </label>
+                                <div class="input-container">
+                                    <input type="text" name="password" required/><br><br>
+                                </div>
+                            </div>
                             <input type="submit" class="formsubmit" value="Submit"/>
                         </form>
                         <div class="msg">

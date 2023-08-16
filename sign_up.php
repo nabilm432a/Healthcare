@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Healthcare</title>
     <link rel="stylesheet" href="main_style.css">
-    <link rel="stylesheet" href="credits.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
 </head>
 
@@ -19,21 +19,15 @@
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
-                        <a href="d_admission.php" title="Join our appointment system as a doctor">Join</a>
-                        <a href="login.php">Login</a>
                     </nav>
                 </div>
             </header>
             <main>
-                <div class="wrapper2">
-                    <article class="article-two">
+                <div class="wrapbox">
+                    <article class="article-one">
                         <header>
-                            <h2 style="text-decoration: underline;">This Project was designed by</h2>
-                            <h3>Group - 4</h3>
-                            <p style="margin-left: 10px;">&#9728; Avishek Paul</p>
-                            <p style="margin-left: 10px;">&#9728; Mitul Roy Tanny</p>
-                            <p style="margin-left: 10px;">&#9728; Mantaqa Abedin</p>
-                            <p style="margin-left: 10px;">&#9728; Nabil Hossain Chowdhury</p>
+                            <a href="p_admission.php"><button type="button">Sign Up As Patient</button></a>
+                            <a href="d_admission.php"><button type="button">Sign Up As Doctor</button></a>
                         </header>
                     </article>
                 </div>
@@ -45,6 +39,7 @@
             <div class="wrapper">
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
+                    <a href="credits.php">About Us</a>
                     <a href="#">Hospitals</a>
                 </nav>
             </div>

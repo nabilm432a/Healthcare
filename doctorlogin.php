@@ -33,33 +33,9 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                         <div class="formwrap">
                             <form action="doctor_join.php" method="post" class="form">
                                 <div class="inp">
-                                    <label for="name">Name: </label>
+                                    <label for="id">ID: </label>
                                     <div class="input-container">
-                                        <input type="text" name="name" required/><br><br>
-                                    </div>
-                                </div>
-                                <div class="inp">
-                                    <label for="age">Age: </label>
-                                    <div class="input-container">
-                                        <input type="number" name="age" required/><br><br>
-                                    </div>
-                                </div>
-                                <div class="inp">
-                                    <label for="degree">Degree: </label>
-                                    <div class="input-container">
-                                        <input type="text" name="degree" required/><br><br>
-                                    </div>
-                                </div>
-                                <div class="inp">
-                                    <label for="spec">Specialization: </label>
-                                    <div class="input-container">
-                                        <input type="text" name="spec" required/><br><br>
-                                    </div>
-                                </div>
-                                <div class="inp">
-                                    <label for="Contact">Contact number: </label>
-                                    <div class="input-container">
-                                        <input type="tel" name="contact" pattern="[0-9]{11}" required/><br><br>
+                                        <input type="text" name="id" required/><br><br>
                                     </div>
                                 </div>
                                 <div class="inp">
@@ -68,7 +44,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                         <input type="text" name="password" required/><br><br>
                                     </div>
                                 </div>
-                                <input type="submit" class="formsubmit" value="Join"/>
+                                <input type="submit" class="formsubmit" value="Enter"/>
                             </form>
                             <div class="msg">
                                 <p><?php echo $message; ?></p>

@@ -6,18 +6,28 @@
     $gender = $_POST['gender'];
     $blood = $_POST['bloodgroup'];
     $contact = $_POST['contact'];
+    $pass = $_POST['password'];
 
     
-    $sql = "INSERT INTO patient (name, age, gender, bloodgroup, contact) VALUES ('$name', '$age', '$gender', '$blood', '$contact')";
+    $sql = "INSERT INTO patient (name, age, gender, bloodgroup, contact, password) VALUES ('$name', '$age', '$gender', '$blood', '$contact', '$password')";
 
-    if($conn->query($sql)){
-        $message = "Inserted Successfully";
-    }
-    else{
-        $message = "Insertion Failed";
-    }
+    if ($conn->query($sql)) {
+        $getid_query = "SELECT id FROM patient ORDER BY id DESC LIMIT 1";
+        $getid_result = $conn->query($getid_query);
 
-    mysqli_close($conn);
-    header("Location: p_admission.php?message=" . urlencode($message));
-    exit;
+        $row = $getid_result->fetch_assoc();
+        $getid = $row['id'];
+        $message = "Inserted Successfully, Your ID is $getid";
+
+        mysqli_close($conn);
+
+        header("Location: p_admission.php?message=" . urlencode($message));
+        exit();
+    } else {
+        $message = "Insertion Failed: " . $conn->error;
+        mysqli_close($conn);
+
+        header("Location: p_admission.php?message=" . urlencode($message));
+        exit();
+    }
 ?>

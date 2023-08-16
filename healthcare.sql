@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 04:17 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Aug 16, 2023 at 09:04 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `appointment` (
   `total_charge` float NOT NULL,
   `time` time NOT NULL,
   `payment_status` enum('Yes','No') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,15 +48,22 @@ CREATE TABLE `doctor` (
   `age` int(11) NOT NULL,
   `degree` varchar(30) NOT NULL,
   `specialization` varchar(30) NOT NULL,
-  `contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `contact` varchar(11) NOT NULL,
+  `slot` int(11) NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `password` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `name`, `age`, `degree`, `specialization`, `contact`) VALUES
-(00003, 'Tanny', 22, 'Medical Sciences', '', '01566457881');
+INSERT INTO `doctor` (`id`, `name`, `age`, `degree`, `specialization`, `contact`, `slot`, `start_time`, `end_time`, `password`) VALUES
+(00003, 'Tanny', 22, 'Medical Sciences', '', '01566457881', 0, '00:00:00', '00:00:00', ''),
+(00005, 'abcbas', 22, 'asdhlsa', 'ksahdfj', '127497471', 2, '-00:00:02', '00:00:00', ''),
+(00006, 'Avishek', 22, 'Computer Science', '', '01248492950', 0, '00:00:00', '00:00:00', 'dsafasdgsadg'),
+(00007, 'absjlbsa', 23, 'sadfsf', '', '01248492950', 0, '00:00:00', '00:00:00', 'bvmfghkghk');
 
 -- --------------------------------------------------------
 
@@ -68,7 +75,7 @@ CREATE TABLE `doctor_works_at` (
   `doctor_id` int(5) UNSIGNED ZEROFILL NOT NULL,
   `hospital_name` varchar(40) NOT NULL,
   `hospital_address` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -80,7 +87,7 @@ CREATE TABLE `hospital` (
   `Name` varchar(40) NOT NULL,
   `Address` varchar(60) NOT NULL,
   `Contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -92,7 +99,7 @@ CREATE TABLE `hospital_test` (
   `hospital_name` varchar(40) NOT NULL,
   `hospital_address` varchar(60) NOT NULL,
   `test_name` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -106,26 +113,30 @@ CREATE TABLE `patient` (
   `age` int(11) NOT NULL,
   `gender` enum('Male','Female') NOT NULL,
   `bloodgroup` enum('A+','A-','B+','B-','AB+','AB-','O+','O-') NOT NULL,
-  `contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `contact` varchar(11) NOT NULL,
+  `password` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `name`, `age`, `gender`, `bloodgroup`, `contact`) VALUES
-(00009, 'Nabil', 22, 'Male', 'O+', '01820056000'),
-(00010, 'Carol', 21, 'Female', 'A+', '03522454796'),
-(00011, 'Laura', 25, 'Female', 'B+', '01436244321'),
-(00012, 'Beret', 30, 'Male', 'B-', '01243653221'),
-(00013, 'Logan', 19, 'Male', 'A-', '01231245506'),
-(00014, 'Lisa', 24, 'Female', 'A+', '01732411680'),
-(00015, 'Nora', 30, 'Female', 'B-', '01835628889'),
-(00016, 'Astarion', 32, 'Male', 'AB+', '01436378289'),
-(00017, 'Wyll', 37, 'Male', 'O-', '01277489950'),
-(00018, 'Shadowheart', 23, 'Female', 'B+', '01266378889'),
-(00019, 'Ray', 12, 'Male', 'AB-', '01778988765'),
-(00020, 'Lex', 27, 'Male', 'O+', '01222334567');
+INSERT INTO `patient` (`id`, `name`, `age`, `gender`, `bloodgroup`, `contact`, `password`) VALUES
+(00009, 'Nabil', 22, 'Male', 'O+', '01820056000', ''),
+(00010, 'Carol', 21, 'Female', 'A+', '03522454796', ''),
+(00011, 'Laura', 25, 'Female', 'B+', '01436244321', ''),
+(00012, 'Beret', 30, 'Male', 'B-', '01243653221', ''),
+(00013, 'Logan', 19, 'Male', 'A-', '01231245506', ''),
+(00014, 'Lisa', 24, 'Female', 'A+', '01732411680', ''),
+(00015, 'Nora', 30, 'Female', 'B-', '01835628889', ''),
+(00016, 'Astarion', 32, 'Male', 'AB+', '01436378289', ''),
+(00017, 'Wyll', 37, 'Male', 'O-', '01277489950', ''),
+(00018, 'Shadowheart', 23, 'Female', 'B+', '01266378889', ''),
+(00019, 'Ray', 12, 'Male', 'AB-', '01778988765', ''),
+(00020, 'Lex', 27, 'Male', 'O+', '01222334567', ''),
+(00021, 'hello', 22, 'Male', 'A+', '01248492950', ''),
+(00022, 'hhh', 44, 'Male', 'A+', '01248492950', ''),
+(00023, 'uuuuu', 111, 'Female', 'A+', '01248492950', '');
 
 -- --------------------------------------------------------
 
@@ -136,7 +147,7 @@ INSERT INTO `patient` (`id`, `name`, `age`, `gender`, `bloodgroup`, `contact`) V
 CREATE TABLE `test` (
   `Name` varchar(40) NOT NULL,
   `Fee` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -196,13 +207,13 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
