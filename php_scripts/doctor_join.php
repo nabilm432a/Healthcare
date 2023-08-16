@@ -21,13 +21,13 @@
 
             mysqli_close($conn);
 
-            header("Location: ../d_admission.php?message=" . urlencode($message));
+            header("Location: ../forms/doctor_signup.php?message=" . urlencode($message));
             exit();
         } else {
             $message = "Unable to register. Please try again.";
             mysqli_close($conn);
 
-            header("Location: ../d_admission.php?message=" . urlencode($message));
+            header("Location: ../forms/doctor_signup.php?message=" . urlencode($message));
             exit();
         }
 ?>

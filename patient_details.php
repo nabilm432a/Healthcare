@@ -2,7 +2,7 @@
     session_start();
     // Redirect to login page if not logged in
     if (!isset($_SESSION["id"])) {
-        header("Location: patientlogin.php");
+        header("Location: forms/patient_login.php");
         exit();
     }
 
@@ -85,7 +85,7 @@
                                     <p>Contact: <?php echo $contact; ?></p>
                                 </div>
                             </div>
-                            <a href="appointment.php"><button type="button" id="app">Make an Appointment</button></a>
+                            <a href="forms/appointment.php"><button type="button" id="app">Make an Appointment</button></a>
                         </header>
                     </article>
                 </div>

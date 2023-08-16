@@ -21,13 +21,13 @@
 
         mysqli_close($conn);
 
-        header("Location: ../p_admission.php?message=" . urlencode($message));
+        header("Location: ../forms/patient_signup.php?message=" . urlencode($message));
         exit();
     } else {
         $message = "Insertion Failed: ";
         mysqli_close($conn);
 
-        header("Location: ../p_admission.php?message=" . urlencode($message));
+        header("Location:../forms/patient_signup.php?message=" . urlencode($message));
         exit();
     }
 ?>

@@ -26,8 +26,8 @@
                 <div class="wrapbox">
                     <article class="article-one">
                         <header>
-                            <a href="patientlogin.php"><button type="button">Login As Patient</button></a>
-                            <a href="doctorlogin.php"><button type="button">Login As Doctor</button></a>
+                            <a href="forms/patient_login.php"><button type="button">Login As Patient</button></a>
+                            <a href="forms/doctor_login.php"><button type="button">Login As Doctor</button></a>
                         </header>
                     </article>
                 </div>

@@ -2,7 +2,7 @@
     session_start();
     // Redirect to login page if not logged in
     if (!isset($_SESSION["id"])) {
-        header("Location: doctorlogin.php");
+        header("Location: forms/doctor_login.php");
         exit();
     }
 

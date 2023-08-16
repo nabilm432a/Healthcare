@@ -29,6 +29,6 @@
 </head>
 <body>
     <?php echo $error; ?>
-    <p><a href="../doctorlogin.php">Go back to Login</a></p>
+    <p><a href="../forms/doctor_login.php">Go back to Login</a></p>
 </body>
 </html>
