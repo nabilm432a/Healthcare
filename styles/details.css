@@ -1,5 +1,4 @@
 .article-one {
-    margin-bottom: 100px;
     width: 60%;
 }
 
@@ -11,4 +10,11 @@
 }
 #app {
     margin-top: 50px;
+}
+.wrapbox {
+    margin-top: 20px;
+    padding: 0.1rem;
+}
+h2 {
+    margin-top: 1rem;
 }
