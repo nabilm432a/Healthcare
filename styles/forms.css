@@ -1,0 +1,31 @@
+.form div {
+    display: flex;
+    justify-content: space-between;
+}
+.form label {
+    flex-basis: 30%;
+}
+.form input {
+    flex-basis: 60%;
+}
+.form {
+    margin-top: 70px;
+}
+.input-container {
+    width: 100%;
+    max-width: 918px;
+}
+.form select {
+    flex-basis: 60%;
+    box-sizing: border-box;
+}
+.formwrap {
+    background-color: rgb(139, 190, 182);
+    border-radius: 8px;
+    padding: 10px;
+    width: 70%;
+    margin-left: 100px;
+}
+.doctorform {
+    margin-top: 60px;
+}

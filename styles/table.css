@@ -1,0 +1,45 @@
+.table-container {
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    max-height: 400px;
+    overflow: auto;
+    padding: 20px;
+    width: 80%;
+    margin-left: 100px;
+}
+.patienttable th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    position:sticky;
+    top: 0;
+}
+
+.patienttable td {
+    padding: 10px;
+}
+
+.patienttable tr th {
+    margin: auto;
+    width: 30%;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+.patienttable tr th:hover {
+    background-color: white;
+    color: black;
+}
+.patienttable tr td {
+    margin: auto;
+    width: 30%;
+    padding: 20px;
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+}
+.no-select {
+    user-select: none;
+}
