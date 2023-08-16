@@ -29,9 +29,9 @@
                         <div class="formwrap">
                             <form action="../php_scripts/patient_loginscript.php" method="post" class="form">
                                 <div class="inp">
-                                    <label for="id">ID: </label>
+                                    <label for="id">ID(Input 5 digit ID): </label>
                                     <div class="input-container">
-                                        <input type="text" name="id" maxlength="5" required/><br><br>
+                                        <input type="text" name="id" pattern="[0-9]*" maxlength="5" required/><br><br>
                                     </div>
                                 </div>
                                 <div class="inp">
