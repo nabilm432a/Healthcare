@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="styles/main_style.css">
     <link rel="stylesheet" href="styles/details.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
+    <script src="scripts/update_contact.js"></script>
 </head>
 
 <body>
@@ -85,7 +86,23 @@
                                     <p>Contact: <?php echo $contact; ?></p>
                                 </div>
                             </div>
+                            <a href="#"><button type="button" id="app">Check Appointments</button></a>
                             <a href="php_scripts/delete_doctor.php"><button style="color: red;" type="button" id="app">Delete Account</button></a>
+                            <a href="#"><button type="button" id="showButton" onclick="showForm()">Update Contact</button></a>
+                            <div style="display:none; margin-top: 50px;" id="formContainer" class="form-container">
+                                <form action="php_scripts/update_doctor_contact.php" method="post">
+                                    <input type="tel" name="new_contact" pattern="[0-9]{11}" maxlength="11" required placeholder="Enter new contact">
+                                    <button style="padding: 5px 10px; width: 100px; height: 30px; border-radius:0px;">Confirm</button>
+                                </form>
+                            </div>
+                            <div style="margin-top: 50px;" class="message-container">
+                                <?php
+                                    if (isset($_SESSION["message"])) {
+                                        echo $_SESSION["message"];
+                                        unset($_SESSION["message"]);
+                                    }
+                                ?>
+                            </div>
                         </header>
                     </article>
                 </div>

@@ -6,7 +6,7 @@
     <title>Healthcare</title>
     <link rel="stylesheet" href="styles/main_style.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
-    <script src="scripts/script.js"></script>
+    <script src="scripts/greeting_script.js"></script>
 </head>
 
 <body onload="updateGreeting()">
