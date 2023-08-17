@@ -42,6 +42,16 @@
                                 </div>
                                 <input type="submit" class="formsubmit" value="Enter"/>
                             </form>
+                            <div class="message-container">
+                                <?php
+                                    session_start();
+                                    
+                                    if (isset($_SESSION["message"])) {
+                                        echo $_SESSION["message"];
+                                        unset($_SESSION["message"]);
+                                    }
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </article>

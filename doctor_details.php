@@ -85,6 +85,7 @@
                                     <p>Contact: <?php echo $contact; ?></p>
                                 </div>
                             </div>
+                            <a href="php_scripts/delete_doctor.php"><button style="color: red;" type="button" id="app">Delete Account</button></a>
                         </header>
                     </article>
                 </div>

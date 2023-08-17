@@ -86,6 +86,7 @@
                                 </div>
                             </div>
                             <a href="forms/appointment.php"><button type="button" id="app">Make an Appointment</button></a>
+                            <a href="php_scripts/delete_patient.php"><button style="color: red;" type="button" id="app">Delete Account</button></a>
                         </header>
                     </article>
                 </div>
