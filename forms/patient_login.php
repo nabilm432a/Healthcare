@@ -6,7 +6,7 @@
     <title>Healthcare</title>
     <link rel="stylesheet" href="../styles/main_style.css">
     <link rel="stylesheet" href="../styles/forms.css">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/artboard_1_9X7_icon.ico" />
 </head>
 
 <body>
