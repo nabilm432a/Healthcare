@@ -1,5 +1,15 @@
 <?php
-$message = isset($_GET['message']) ? $_GET['message'] : '';
+    $message = isset($_GET['message']) ? $_GET['message'] : '';
+    session_start();
+    require_once('../php_scripts/connect.php');
+    if (!isset($_SESSION["id"])) {
+        header("Location: ../patient_details.php");
+        exit();
+    }
+    $session_id = $_SESSION['id']
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -31,37 +41,26 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                     <h1>Making an Appointment</h1>
                     <p>Please ensure you have admitted to our services, otherwise you will not be able to make an appointment</p>
                     <div class="formwrap">
-                        <form action="#" method="post" class="form">
+                        <form action="../php_scripts/appointmentscript.php" method="post" class="form">
                             <div>
-                                <label for="name">Name: </label>
-                                <div class="input-container">
-                                    <input type="text" name="name" required/><br><br>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="id">ID: </label>
-                                <div class="input-container">
-                                    <input type="number" name="id" required/><br><br>
-                                </div>
-                            </div>
-                            <div>
+                                <input type="hidden" name="patient_id" value="<?php echo $session_id; ?>">
                                 <label for="doctor">Doctor: </label>
                                 <div class="input-container">
                                     <select name="doctor" id="doctor">
                                         <?php
-                                        require_once('../php_scripts/connect.php');
-                                        $sql = 'SELECT name from doctor';
-                                        $result = $conn->query($sql);
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                $nameValue = $row["name"];
-                                                $displayText = "Dr. " . $nameValue;
-                                                echo "<option value='" . $nameValue . "'>" . $displayText . "</option>";
+                                            require_once('../php_scripts/connect.php');
+                                            $sql = 'SELECT id, name FROM doctor';
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    $doctorId = $row["id"];
+                                                    $nameValue = $row["name"];
+                                                    $displayText = "Dr. " . $nameValue;
+                                                    echo "<option value='" . $doctorId . "'>" . $displayText . "</option>";
+                                                }
+                                            } else {
+                                                echo "<option>No Doctors Available</option>";
                                             }
-                                        } else {
-                                            echo "<option>No Doctors Available</option>";
-                                        }
-                                        $conn->close();
                                         ?>
                                     </select><br><br>
                                 </div>
@@ -69,7 +68,30 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                             <div>
                                 <label for="test">Test: </label>
                                 <div class="input-container">
-                                    <input type="text" name="test" required/><br><br>
+                                    <select name="test" id="test">
+                                        <?php
+                                            require_once('../php_scripts/connect.php');
+                                            $sql2 = 'SELECT name, fee FROM test';
+                                            $output = $conn->query($sql2);
+                                            if ($output->num_rows > 0) {
+                                                while ($r = $output->fetch_assoc()) {
+                                                    $testname = $r["name"];
+                                                    $fee = $r["fee"];
+                                                    $dText = $testname . " [Fee: $" . $fee . "]";
+                                                    echo "<option value='" . $testname . "'>" . $dText . "</option>";
+                                                }
+                                            } else {
+                                                echo "<option>Tests Currently Unavailable</option>";
+                                            }
+                                            $conn->close();
+                                        ?>
+                                    </select><br><br>
+                                </div>
+                            </div>
+                            <div class="inp">
+                                <label for="app_time">Time (24hr-Clock): </label>
+                                <div class="input-container">
+                                    <input type="time" name="app_time" required/><br><br>
                                 </div>
                             </div>
                             
