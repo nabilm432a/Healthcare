@@ -62,6 +62,18 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                         <input type="tel" name="contact" pattern="[0-9]{11}" maxlength="11" required/><br><br>
                                     </div>
                                 </div>
+								<div class="inp">
+                                    <label for="Contact">Appointment Start Time: </label>
+                                    <div class="input-container">
+                                        <input type="time" name="starttime" required/><br><br>
+                                    </div>
+                                </div>
+								<div class="inp">
+                                    <label for="Contact">Appointment End Time: </label>
+                                    <div class="input-container">
+                                        <input type="time" name="endtime" required/><br><br>
+                                    </div>
+                                </div>
                                 <div class="inp">
                                     <label for="password">Password: </label>
                                     <div class="input-container">

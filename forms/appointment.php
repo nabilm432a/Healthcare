@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="inp">
-                                <label for="app_time">Time (24hr-Clock): </label>
+                                <label for="app_time">Time: </label>
                                 <div class="input-container">
                                     <input type="time" name="app_time" required/><br><br>
                                 </div>

@@ -6,10 +6,12 @@
     $degree = $_POST['degree'];
     $spec = $_POST['spec'];
     $contact = $_POST['contact'];
+	$start = $_POST['starttime'];
+	$end = $_POST['endtime'];
     $password = $_POST['password'];
 
     
-    $sql = "INSERT INTO doctor (name, age, degree, specialization, contact, password) VALUES ('$name', '$age', '$degree', '$spec', '$contact', '$password')";
+    $sql = "INSERT INTO doctor (name, age, degree, specialization, contact, slot, start_time, end_time, password) VALUES ('$name', '$age', '$degree', '$spec', '$contact', 5, '$start', '$end', '$password')";
 
     if ($conn->query($sql)) {
             $getid_query = "SELECT id FROM doctor ORDER BY id DESC LIMIT 1";
