@@ -6,6 +6,8 @@
         header("Location: ../patient_details.php");
         exit();
     }
+    
+
     $session_id = $_SESSION["id"];
 
     $query = "DELETE FROM patient where id = $session_id";

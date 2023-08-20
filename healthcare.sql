@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2023 at 06:57 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Aug 20, 2023 at 06:54 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `appointment` (
   `total_charge` float NOT NULL,
   `time` time NOT NULL,
   `payment_status` enum('Yes','No') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,14 @@ CREATE TABLE `doctor` (
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `password` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`id`, `name`, `age`, `degree`, `specialization`, `contact`, `slot`, `start_time`, `end_time`, `password`) VALUES
+(00017, 'Phantom', 33, 'Medical Sciences', 'Emergency', '01744589900', 5, '00:00:00', '10:00:00', '1234');
 
 -- --------------------------------------------------------
 
@@ -65,7 +72,14 @@ CREATE TABLE `doctor_works_at` (
   `doctor_id` int(5) UNSIGNED ZEROFILL NOT NULL,
   `hospital_name` varchar(40) NOT NULL,
   `hospital_address` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctor_works_at`
+--
+
+INSERT INTO `doctor_works_at` (`doctor_id`, `hospital_name`, `hospital_address`) VALUES
+(00017, 'ABC', 'Road-5, Block-X, Dhaka');
 
 -- --------------------------------------------------------
 
@@ -77,7 +91,15 @@ CREATE TABLE `hospital` (
   `Name` varchar(40) NOT NULL,
   `Address` varchar(60) NOT NULL,
   `Contact` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hospital`
+--
+
+INSERT INTO `hospital` (`Name`, `Address`, `Contact`) VALUES
+('ABC', 'Road-5, Block-X, Dhaka', '01268939983'),
+('EFG', 'Road-8, Block-G, Dhaka', '01268335583');
 
 -- --------------------------------------------------------
 
@@ -89,7 +111,7 @@ CREATE TABLE `hospital_test` (
   `hospital_name` varchar(40) NOT NULL,
   `hospital_address` varchar(60) NOT NULL,
   `test_name` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -105,7 +127,14 @@ CREATE TABLE `patient` (
   `bloodgroup` enum('A+','A-','B+','B-','AB+','AB-','O+','O-') NOT NULL,
   `contact` varchar(11) NOT NULL,
   `password` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`id`, `name`, `age`, `gender`, `bloodgroup`, `contact`, `password`) VALUES
+(00029, 'Nabil', 23, 'Male', 'O+', '01820056000', '1234');
 
 -- --------------------------------------------------------
 
@@ -116,7 +145,7 @@ CREATE TABLE `patient` (
 CREATE TABLE `test` (
   `Name` varchar(40) NOT NULL,
   `Fee` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -176,13 +205,13 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables

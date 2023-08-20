@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="styles/details.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
     <script src="scripts/update_contact.js"></script>
+    <script src="scripts/script.js"></script>
 </head>
 
 <body>

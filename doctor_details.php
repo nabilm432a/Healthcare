@@ -11,6 +11,12 @@
     // Get patient details using the authenticated patient's ID
     $id = $_SESSION["id"];
     $query = "SELECT id, name, age, degree, specialization, contact FROM doctor WHERE id = $id";
+    $hospitals = array();
+    $hospitalQuery = "SELECT hospital_name FROM doctor_works_at WHERE doctor_id = $id";
+    $hospitalResult = $conn->query($hospitalQuery);
+    while ($hospitalRow = $hospitalResult->fetch_assoc()) {
+        $hospitals[] = $hospitalRow['hospital_name'];
+    }
     $result = $conn->query($query);
 
     if ($result->num_rows == 1) {
@@ -30,8 +36,7 @@
         $bloodGroup = "N/A";
         $contact = "N/A";
     }
-
-    $conn->close();
+    $message = isset($_GET['message']) ? $_GET['message'] : '';
 ?>
 
 
@@ -43,8 +48,10 @@
     <title>Healthcare</title>
     <link rel="stylesheet" href="styles/main_style.css">
     <link rel="stylesheet" href="styles/details.css">
+    <link rel="stylesheet" href="styles/docdet.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
     <script src="scripts/update_contact.js"></script>
+    <script src="scripts/script.js"></script>
 </head>
 
 <body>
@@ -68,7 +75,7 @@
                             <h2>Welcome, <?php echo $doctorName; ?>!</h2>
                             <div class="patient">
                                 <div class="piece">
-                                    <p>Patient ID: <?php echo $doctorId; ?></p>
+                                    <p>Doctor ID: <?php echo $doctorId; ?></p>
                                 </div>
                                 <div class="piece">
                                     <p>Name: <?php echo $doctorName; ?></p>
@@ -85,6 +92,13 @@
                                 <div class="piece">
                                     <p>Contact: <?php echo $contact; ?></p>
                                 </div>
+                                <div class="piece">
+                                    <?php if (!empty($hospitals)) { ?>
+                                        <p>Hospital(s): <?php echo implode(', ', $hospitals); ?></p>
+                                    <?php } else { ?>
+                                        <p>Hospitals: None</p>
+                                    <?php } ?>
+                                </div>
                             </div>
                             <a href="#"><button type="button" id="app">Check Appointments</button></a>
                             <a href="php_scripts/delete_doctor.php"><button style="color: red;" type="button" id="app">Delete Account</button></a>
@@ -95,6 +109,7 @@
                                     <button style="padding: 5px 10px; width: 100px; height: 30px; border-radius:0px;">Confirm</button>
                                 </form>
                             </div>
+
                             <div style="margin-top: 50px;" class="message-container">
                                 <?php
                                     if (isset($_SESSION["message"])) {
@@ -102,6 +117,42 @@
                                         unset($_SESSION["message"]);
                                     }
                                 ?>
+                            </div>
+                            <div class="showf">
+                                <p style="color: white;">Start by joining a couple of hospitals to work for</p>
+                                <a><button type="button" id="showform" onclick="showhospitalform()">Show</button></a>
+                                <div class="msg">
+                                    <p style="color: white;"><?php echo $message; ?></p>
+                                </div>
+                            </div>
+                            <div class="fullform" id="hospitalemployment">
+                                <div class="formwrap">
+                                    <form action="php_scripts/hopsitaljoin.php" method="post" class="form">
+                                        <div class="inp">
+                                            <label for="password">Select a hospital to join: </label>
+                                            <div class="input-container">
+                                                <select name="hospital" id="hospital">
+                                                    <?php
+                                                        require_once('php_scripts/connect.php');
+                                                        $sql = 'SELECT name, address FROM hospital';
+                                                        $output = $conn->query($sql);
+                                                        if ($output->num_rows > 0) {
+                                                            while ($row = $output->fetch_assoc()) {
+                                                                $hospital = $row["name"];
+                                                                $address = $row["address"];
+                                                                echo "<option value='" . $hospital . "|" . $address . "'>" . $hospital . "</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<option>No Hospitals Available</option>";
+                                                        }
+                                                        $conn->close();
+                                                    ?>
+                                                </select><br><br>
+                                            </div>
+                                        </div>
+                                        <button style="padding: 5px 10px; width: 100px; height: 30px; border-radius:0px;">Confirm</button>
+                                    </form>
+                                </div>
                             </div>
                         </header>
                     </article>
