@@ -1,0 +1,48 @@
+.buttongroup {
+    display: flex;
+    justify-content: center;
+    padding: 6rem;
+}
+
+.buttongroup button {
+    background-color: rgb(118, 213, 203);
+    height: 50px;
+    display: block;
+    border: none;
+    border-radius: 8px;
+    margin: 0px auto;
+    margin-top: 30px;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.1rem;
+    color: white;
+}
+.buttongroup a {
+    text-decoration: none;
+}
+
+.buttongroup header {
+    border-radius: 8px;
+    background-image: url('../assets/v870-tang-36.jpg');
+    padding: 2rem 24rem 2rem 24rem;
+}
+
+.buttongroup {
+    display: inline-block;
+}
+
+.buttongroup button:hover {
+    background-color: rgb(219, 240, 236);
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.buttongroup button:active {
+    background-color: white;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

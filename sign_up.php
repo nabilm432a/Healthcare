@@ -19,12 +19,13 @@
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
+                        <a href="login.php">Login</a>
                     </nav>
                 </div>
             </header>
             <main>
                 <div class="wrapbox">
-                    <article class="article-one">
+                    <article class="buttongroup">
                         <header>
                             <a href="forms/patient_signup.php"><button type="button">Sign Up As Patient</button></a>
                             <a href="forms/doctor_signup.php"><button type="button">Sign Up As Doctor</button></a>

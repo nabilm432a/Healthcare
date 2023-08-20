@@ -18,7 +18,6 @@
                         <h1>Healthcare Appointment System</h1>
                     </section>
                     <nav class="nav-horizontal" id="topnav">
-                        <a href="sign_up.php">Sign Up</a>
                         <a href="login.php">Login</a>
                     </nav>
                 </div>
