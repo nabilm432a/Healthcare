@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Healthcare</title>
     <link rel="stylesheet" href="styles/main_style.css">
-    <link rel="stylesheet" href="styles/credits.css">
+    <link rel="stylesheet" href="styles/login.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
 </head>
 
@@ -19,21 +19,12 @@
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
-                        <a href="forms/adminlogin.php">Admin Log in</a>
                     </nav>
                 </div>
             </header>
             <main>
-                <div class="wrapper2">
-                    <article class="article-two">
-                        <header>
-                            <h2 style="text-decoration: underline;">This Project was designed by</h2>
-                            <h3>Group - 4</h3>
-                            <p style="margin-left: 10px;">&#9728; Avishek Paul</p>
-                            <p style="margin-left: 10px;">&#9728; Mitul Roy Tanny</p>
-                            <p style="margin-left: 10px;">&#9728; Mantaqa Abedin</p>
-                            <p style="margin-left: 10px;">&#9728; Nabil Hossain Chowdhury</p>
-                        </header>
+                <div class="wrapbox">
+                    <article class="article-one">
                     </article>
                 </div>
 
@@ -44,6 +35,7 @@
             <div class="wrapper">
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
+                    <a href="credits.php">About Us</a>
                     <a href="#">Hospitals</a>
                 </nav>
             </div>
