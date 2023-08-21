@@ -1,17 +1,3 @@
-<?php
-    $message = isset($_GET['message']) ? $_GET['message'] : '';
-    session_start();
-    require_once('../php_scripts/connect.php');
-    if (!isset($_SESSION["id"])) {
-        header("Location: ../patient_details.php");
-        exit();
-    }
-    $session_id = $_SESSION['id']
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +6,8 @@
     <title>Healthcare</title>
     <link rel="stylesheet" href="../styles/main_style.css">
     <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/select.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/artboard_1_9X7_icon.ico" />
-    <script src="../scripts/script.js"></script>
 </head>
 
 <body>
@@ -41,15 +27,23 @@
                 <article class="article-one">
                     <h1>Making an Appointment</h1>
                     <div class="formwrap">
-                        <form action="../php_scripts/appointmentscript.php" method="post" class="form" id="appointmentForm" onsubmit="return validateForm();">
-                            <div>
-                                <input type="hidden" name="patient_id" value="<?php echo $session_id; ?>">
+                        <form action="../php_scripts/appointmentscript.php" method="post" class="form" id="appointmentForm">
+                            <input type="hidden" name="patient_id" value="<?php echo $_POST['patient_id']; ?>">
+                            <input type="hidden" name="selected_test" value="<?php echo $_POST['selected_test']; ?>">
+                            <input type="hidden" name="selected_hospital" value="<?php echo $_POST['hospital']; ?>">
+                            <div class="inp">
                                 <label for="doctor">Doctor: </label>
                                 <div class="input-container">
                                     <select name="doctor" id="doctor">
                                         <?php
                                             require_once('../php_scripts/connect.php');
-                                            $sql = 'SELECT id, name FROM doctor';
+                                            $hospitalname = $_POST['hospital'];
+                                            $sql1 = "SELECT doctor_id FROM doctor_works_at where hospital_name = '$hospitalname'";
+                                            $d_id_result = $conn->query($sql1);
+                                            $d_id_row = $d_id_result->fetch_assoc();
+                                            $d_id = $d_id_row["doctor_id"];
+
+                                            $sql = "SELECT id, name FROM doctor where id = '$d_id'";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {
@@ -65,41 +59,14 @@
                                     </select><br><br>
                                 </div>
                             </div>
-                            <div>
-                                <label for="test">Test: </label>
-                                <div class="input-container">
-                                    <select name="test" id="test">
-                                        <?php
-                                            require_once('../php_scripts/connect.php');
-                                            $sql2 = 'SELECT name, fee FROM test';
-                                            $output = $conn->query($sql2);
-                                            if ($output->num_rows > 0) {
-                                                while ($r = $output->fetch_assoc()) {
-                                                    $testname = $r["name"];
-                                                    $fee = $r["fee"];
-                                                    $dText = $testname . " [Fee: $" . $fee . "]";
-                                                    echo "<option value='" . $testname . "'>" . $dText . "</option>";
-                                                }
-                                            } else {
-                                                echo "<option>Tests Currently Unavailable</option>";
-                                            }
-                                            $conn->close();
-                                        ?>
-                                    </select><br><br>
-                                </div>
-                            </div>
                             <div class="inp">
                                 <label for="app_time">Time: </label>
                                 <div class="input-container">
                                     <input type="time" name="app_time" required/><br><br>
                                 </div>
                             </div>
-                            
                             <input type="submit" class="formsubmit" value="Submit"/>
                         </form>
-                        <div class="msg">
-                            <p><?php echo $message; ?></p>
-                        </div>
                     </div>
                 </article>
 

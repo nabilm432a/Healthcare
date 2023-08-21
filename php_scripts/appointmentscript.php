@@ -6,7 +6,7 @@
 
     $selectedDoctorId = $_POST['doctor'];
 
-    $selectedtest = $_POST['test'];
+    $selectedtest = $_POST['selected_test'];
     
     $time = $_POST['app_time'];
 	
@@ -36,18 +36,18 @@
 			}
 			mysqli_close($conn);
 
-			header("Location: ../forms/appointment.php?message=" . urlencode($message));
+			header("Location: ../forms/appointment_selecttest.php?message=" . urlencode($message));
 			exit();
 		} else {
 			$message = "Unable to create an appointment. Please try again.";
 			mysqli_close($conn);
 
-			header("Location: ../forms/appointment.php?message=" . urlencode($message));
+			header("Location: ../forms/appointment_selecttest.php?message=" . urlencode($message));
 			exit();
 		}
 	} else {
 		mysqli_close($conn);
 		$message = "Selected appointment time is outside of doctor's working hours.";
-		header("Location: ../forms/appointment.php?message=" . urlencode($message));
+		header("Location: ../forms/appointment_selecttest.php?message=" . urlencode($message));
 	}
 ?>

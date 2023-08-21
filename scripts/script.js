@@ -13,3 +13,21 @@ function updateGreeting() {
 
     document.getElementById("greeting").textContent = greeting;
   }
+
+
+function validateForm() {
+    var doctorSelect = document.getElementById("doctor");
+    var testSelect = document.getElementById("test");
+
+    if (doctorSelect.options.length === 0) {
+        alert("No doctors are available. Please try again later.");
+        return false;
+    }
+
+    if (testSelect.options.length === 0) {
+        alert("No tests are available. Please try again later.");
+        return false;
+    }
+
+    return true;
+}

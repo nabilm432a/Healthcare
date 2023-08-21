@@ -20,6 +20,7 @@
     <title>Healthcare</title>
     <link rel="stylesheet" href="../styles/main_style.css">
     <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/select.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/artboard_1_9X7_icon.ico" />
     <script src="../scripts/script.js"></script>
 </head>
@@ -41,29 +42,9 @@
                 <article class="article-one">
                     <h1>Making an Appointment</h1>
                     <div class="formwrap">
-                        <form action="../php_scripts/appointmentscript.php" method="post" class="form" id="appointmentForm" onsubmit="return validateForm();">
+                        <form action="appointment_selecthospital.php" method="post" class="form" id="appointmentForm" onsubmit="return validateForm();">
                             <div>
                                 <input type="hidden" name="patient_id" value="<?php echo $session_id; ?>">
-                                <label for="doctor">Doctor: </label>
-                                <div class="input-container">
-                                    <select name="doctor" id="doctor">
-                                        <?php
-                                            require_once('../php_scripts/connect.php');
-                                            $sql = 'SELECT id, name FROM doctor';
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    $doctorId = $row["id"];
-                                                    $nameValue = $row["name"];
-                                                    $displayText = "Dr. " . $nameValue;
-                                                    echo "<option value='" . $doctorId . "'>" . $displayText . "</option>";
-                                                }
-                                            } else {
-                                                echo "<option>No Doctors Available</option>";
-                                            }
-                                        ?>
-                                    </select><br><br>
-                                </div>
                             </div>
                             <div>
                                 <label for="test">Test: </label>
@@ -88,13 +69,6 @@
                                     </select><br><br>
                                 </div>
                             </div>
-                            <div class="inp">
-                                <label for="app_time">Time: </label>
-                                <div class="input-container">
-                                    <input type="time" name="app_time" required/><br><br>
-                                </div>
-                            </div>
-                            
                             <input type="submit" class="formsubmit" value="Submit"/>
                         </form>
                         <div class="msg">
