@@ -24,10 +24,13 @@
             </header>
             <main>
                 <div class="wrapbox">
-                    <article class="article-one">
+                    <article class="buttongroup">
+                        <header>
+                            <a href="change_tests.php"><button type="button">Tests</button></a>
+                            <a href="change_hospitals.php"><button type="button">Hospitals</button></a>
+                        </header>
                     </article>
                 </div>
-
             </main>
         </div>
 

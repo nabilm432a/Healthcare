@@ -1,0 +1,73 @@
+.table-container {
+    flex: 1;
+    max-height: 400px;
+    overflow: auto;
+    padding: 20px;
+    width: 80%;
+}
+.table th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    position:sticky;
+    top: 0;
+}
+
+.table tr th {
+    margin: auto;
+    width: 30%;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+.table tr th:hover {
+    background-color: white;
+    color: black;
+}
+.table tr td {
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+}
+.table tr td form {
+    margin-bottom: 10px;
+}
+.no-select {
+    user-select: none;
+}
+.buttongroup button {
+    background-color: rgb(118, 213, 203);
+    display: block;
+    border: none;
+    border-radius: 8px;
+    margin: 0px auto;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.0rem;
+    color: white;
+}
+.buttongroup a {
+    text-decoration: none;
+}
+.buttongroup {
+    display: inline-block;
+}
+.buttongroup button:hover {
+    background-color: rgb(219, 240, 236);
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.buttongroup button:active {
+    background-color: white;
+}
+.buttongroup header {
+    border-radius: 8px;
+    background-image: url('../assets/v870-tang-36.jpg');
+    padding: 2rem 24rem 2rem 24rem;
+}

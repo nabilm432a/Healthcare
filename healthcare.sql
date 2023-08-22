@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2023 at 06:54 PM
+-- Generation Time: Aug 22, 2023 at 07:26 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -79,7 +79,8 @@ CREATE TABLE `doctor_works_at` (
 --
 
 INSERT INTO `doctor_works_at` (`doctor_id`, `hospital_name`, `hospital_address`) VALUES
-(00017, 'ABC', 'Road-5, Block-X, Dhaka');
+(00017, 'EFG', 'Road-8, Block-G, Dhaka'),
+(00017, 'XYZ', 'Road-5, Block-X, Dhaka');
 
 -- --------------------------------------------------------
 
@@ -98,8 +99,8 @@ CREATE TABLE `hospital` (
 --
 
 INSERT INTO `hospital` (`Name`, `Address`, `Contact`) VALUES
-('ABC', 'Road-5, Block-X, Dhaka', '01268939983'),
-('EFG', 'Road-8, Block-G, Dhaka', '01268335583');
+('EFG', 'Road-8, Block-G, Dhaka', '01268335583'),
+('XYZ', 'Road-5, Block-X, Dhaka', '01268939983');
 
 -- --------------------------------------------------------
 
@@ -146,6 +147,14 @@ CREATE TABLE `test` (
   `Name` varchar(40) NOT NULL,
   `Fee` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`Name`, `Fee`) VALUES
+('ABC', 500),
+('CDE', 150);
 
 --
 -- Indexes for dumped tables
