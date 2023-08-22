@@ -43,7 +43,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                 <div class="inp">
                                     <label for="age">Address: </label>
                                     <div class="input-container">
-                                        <input type="number" name="fee" required/><br><br>
+                                        <input type="text" name="address" required/><br><br>
                                     </div>
                                 </div>
                                 <div class="inp">
