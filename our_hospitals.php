@@ -18,7 +18,7 @@
                         <h1 class="header-title">Healthcare Appointment System</h1>
                     </section>
                     <nav class="nav-horizontal" id="topnav">
-                        <a href="login.php">Login</a>
+                        <a href="index.php">Home</a>
                     </nav>
                 </div>
             </header>
@@ -56,8 +56,6 @@
             </div>
         </footer>
 
-
-
-    
-
 </body>
+
+</html>

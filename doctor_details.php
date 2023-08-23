@@ -87,7 +87,7 @@
                                     <p>Degree: <?php echo $degree; ?></p>
                                 </div>
                                 <div class="piece">
-                                    <p>Specialization: <?php echo $spec; ?></p>
+                                    <p>Specialty: <?php echo $spec; ?></p>
                                 </div>
                                 <div class="piece">
                                     <p>Contact: <?php echo $contact; ?></p>

@@ -49,7 +49,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
 								<div class="inp">
                                     <label for="hospitalname">Hospital: </label>
                                     <div class="input-container">
-										<select name="test" id="test">
+										<select name="hospitalname" id="hospitalname">
 											<?php
 												require_once('../php_scripts/connect.php');
 												$sql2 = 'SELECT name FROM hospital';

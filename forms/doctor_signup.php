@@ -51,7 +51,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                     </div>
                                 </div>
                                 <div class="inp">
-                                    <label for="spec">Specialization: </label>
+                                    <label for="spec">Specialty: </label>
                                     <div class="input-container">
                                         <input type="text" name="spec" required/><br><br>
                                     </div>

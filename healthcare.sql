@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2023 at 07:26 PM
+-- Generation Time: Aug 23, 2023 at 12:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,8 +33,16 @@ CREATE TABLE `appointment` (
   `test_name` varchar(40) NOT NULL,
   `total_charge` float NOT NULL,
   `time` time NOT NULL,
-  `payment_status` enum('Yes','No') NOT NULL
+  `payment_status` enum('Yes','No') NOT NULL,
+  `hospital_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`patient_id`, `doctor_id`, `test_name`, `total_charge`, `time`, `payment_status`, `hospital_name`) VALUES
+(00030, 00019, 'Consultancy', 20, '22:35:00', 'No', 'Evercare');
 
 -- --------------------------------------------------------
 
@@ -46,8 +54,8 @@ CREATE TABLE `doctor` (
   `id` int(5) UNSIGNED ZEROFILL NOT NULL,
   `name` varchar(30) NOT NULL,
   `age` int(11) NOT NULL,
-  `degree` varchar(30) NOT NULL,
-  `specialization` varchar(30) NOT NULL,
+  `degree` varchar(60) NOT NULL,
+  `specialization` varchar(60) NOT NULL,
   `contact` varchar(11) NOT NULL,
   `slot` int(11) NOT NULL,
   `start_time` time NOT NULL,
@@ -60,7 +68,7 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `name`, `age`, `degree`, `specialization`, `contact`, `slot`, `start_time`, `end_time`, `password`) VALUES
-(00017, 'Phantom', 33, 'Medical Sciences', 'Emergency', '01744589900', 5, '00:00:00', '10:00:00', '1234');
+(00019, 'Karne', 45, 'Medical Sciences', 'Emergency', '02523342222', 1, '20:00:00', '23:00:00', '1234');
 
 -- --------------------------------------------------------
 
@@ -79,8 +87,7 @@ CREATE TABLE `doctor_works_at` (
 --
 
 INSERT INTO `doctor_works_at` (`doctor_id`, `hospital_name`, `hospital_address`) VALUES
-(00017, 'EFG', 'Road-8, Block-G, Dhaka'),
-(00017, 'XYZ', 'Road-5, Block-X, Dhaka');
+(00019, 'Evercare', 'Block-A, Bashundhara, Dhaka');
 
 -- --------------------------------------------------------
 
@@ -99,8 +106,7 @@ CREATE TABLE `hospital` (
 --
 
 INSERT INTO `hospital` (`Name`, `Address`, `Contact`) VALUES
-('EFG', 'Road-8, Block-G, Dhaka', '01268335583'),
-('XYZ', 'Road-5, Block-X, Dhaka', '01268939983');
+('Evercare', 'Block-A, Bashundhara, Dhaka', '1235552344');
 
 -- --------------------------------------------------------
 
@@ -113,6 +119,13 @@ CREATE TABLE `hospital_test` (
   `hospital_address` varchar(60) NOT NULL,
   `test_name` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hospital_test`
+--
+
+INSERT INTO `hospital_test` (`hospital_name`, `hospital_address`, `test_name`) VALUES
+('Evercare', 'Block-A, Bashundhara, Dhaka', 'Consultancy');
 
 -- --------------------------------------------------------
 
@@ -135,7 +148,7 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `name`, `age`, `gender`, `bloodgroup`, `contact`, `password`) VALUES
-(00029, 'Nabil', 23, 'Male', 'O+', '01820056000', '1234');
+(00030, 'Nabil Hossain', 22, 'Male', 'O+', '01820056000', '1234');
 
 -- --------------------------------------------------------
 
@@ -153,8 +166,7 @@ CREATE TABLE `test` (
 --
 
 INSERT INTO `test` (`Name`, `Fee`) VALUES
-('ABC', 500),
-('CDE', 150);
+('Consultancy', 20);
 
 --
 -- Indexes for dumped tables
@@ -214,13 +226,13 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
