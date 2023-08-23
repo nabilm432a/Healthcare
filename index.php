@@ -24,7 +24,7 @@
             </header>
             <main>
                 <div class="wrapbox">
-                    <article class="article-one">
+                    <article style="background-image: url('assets/hospimg.jpg'); border-radius: 8px;" class="article-one">
                         <header id="mainhead">
                             <h2 style="font-size: 3rem;" id="greeting">Greetings</h2>
                             <p>Access healthcare appointments from anywhere!</p>
