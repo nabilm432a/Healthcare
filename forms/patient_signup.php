@@ -84,13 +84,9 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                             </div>
                             <input type="submit" class="formsubmit" value="Submit"/>
                         </form>
+                        <a href="patient_login.php"><button style="padding: 5px 10px; width: 100px; height: 30px; font-size: 0.6rem;">Log In</button>
                         <div class="msg">
                             <p><?php echo $message; ?></p>
-                        </div>
-                    
-                
-                        <div class="currentpatients">
-                            <a href="../patients_list.php"><button type="Button">Click here to check current patients</button></a>
                         </div>
                     </div>
 
@@ -104,6 +100,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
                     <a href="../credits.php">About Us</a>
+                    <a href="../patients_list.php">Check Patients</a>
                 </nav>
             </div>
         </footer>
