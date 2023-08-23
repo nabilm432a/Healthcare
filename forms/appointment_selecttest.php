@@ -42,7 +42,7 @@
                 <article class="article-one">
                     <h1>Making an Appointment</h1>
                     <div class="formwrap">
-                        <form action="appointment_selecthospital.php" method="post" class="form" id="appointmentForm" onsubmit="return validateForm();">
+                        <form action="appointment_selecthospital.php" method="post" class="form" id="appointmentForm" onsubmit="return validatetestform();">
                             <div>
                                 <input type="hidden" name="patient_id" value="<?php echo $session_id; ?>">
                             </div>

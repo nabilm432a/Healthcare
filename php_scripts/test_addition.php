@@ -3,14 +3,11 @@
 
     $name = $_POST['name'];
     $fee = $_POST['fee'];
-	$hospital = $_POST['hospitalname'];
+	$hospitaln = $_POST['hospitalname'];
+    $hospitala = $_POST['hospitaladdr'];
 
-	$findhospital = "SELECT address from hospital where name='$hospital'";
-    $result = $conn->query($findhospital);
-	$rows = $result->fetch_assoc();
-	$hospitaladdress = $rows['address'];
     $sql = "INSERT IGNORE INTO test VALUES ('$name', $fee)";
-	$sql2 = "INSERT INTO hospital_test VALUES ('$hospital', '$hospitaladdress', '$name')";
+	$sql2 = "INSERT IGNORE INTO hospital_test VALUES ('$hospitaln', '$hospitala', '$name')";
     if ($conn->query($sql)) {
 			$conn->query($sql2);
             $message = "'$name' added.";

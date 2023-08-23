@@ -42,7 +42,7 @@
                                 </div>
                                 <input type="submit" class="formsubmit" value="Enter"/>
                             </form>
-                            <a href="doctor_signup.php"><button style="padding: 5px 10px; width: 100px; height: 30px; font-size: 0.6rem;">Sign Up instead</button>
+                            <a href="doctor_signup.php"><button style="padding: 5px 10px; width: 100px; height: 30px; font-size: 0.6rem;">Sign Up instead</button></a>
                             <div class="message-container">
                                 <?php
                                     session_start();

@@ -5,11 +5,15 @@
     $addr = $_POST['address'];
     $contact = $_POST['contact'];
     
-    $sql = "INSERT INTO hospital VALUES ('$name', '$addr', $contact)";
+    $sql = "INSERT IGNORE INTO hospital VALUES ('$name', '$addr', $contact)";
     if ($conn->query($sql)) {
+        if ($conn->affected_rows>0) {
             $message = "'$name' added.";
             mysqli_close($conn);
-
+        } else {
+            $message = "$name already exists";
+            mysqli_close($conn);
+        }
             header("Location: ../forms/add_hospital.php?message=" . urlencode($message));
             exit();
         } else {

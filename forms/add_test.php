@@ -11,6 +11,8 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
     <link rel="stylesheet" href="../styles/main_style.css">
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../scripts/script.js"></script>
 </head>
 
 <body>
@@ -30,48 +32,58 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
             <main>
                 <div class="wrapbox">
                     <article class="article-one">
-                    <h1>Enter the information for the test: </h1>
-                    <div class="form">
-                        <div class="formwrap">
-                            <form action="../php_scripts/test_addition.php" method="post" class="form">
-                                <div class="inp">
-                                    <label for="name">Name: </label>
-                                    <div class="input-container">
-                                        <input type="text" name="name" required/><br><br>
+                        <h1>Enter the information for the test: </h1>
+                        <div class="form">
+                            <div class="formwrap">
+                                <form action="../php_scripts/test_addition.php" method="post" class="form">
+                                    <div class="inp">
+                                        <label for="hospitalname">Hospital: </label>
+                                        <div class="input-container">
+                                            <select name="hospitalname" id="hospitalname">
+                                                <option value="" disabled selected>Select a Hospital</option>
+                                                <?php
+                                                    require_once('../php_scripts/connect.php');
+                                                    $sql2 = 'SELECT name FROM hospital';
+                                                    $output = $conn->query($sql2);
+                                                    if ($output->num_rows > 0) {
+                                                        while ($r = $output->fetch_assoc()) {
+                                                            $hospitalname = $r["name"];
+                                                            echo "<option value='" . $hospitalname . "'>" . $hospitalname . "</option>";
+                                                        }
+                                                        
+                                                    } else {
+                                                        echo "<option>No Hospitals Available</option>";
+                                                    }
+                                                ?>
+                                            </select><br><br>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="inp">
-                                    <label for="fee">Fee: </label>
-                                    <div class="input-container">
-                                        <input type="number" name="fee" required/><br><br>
+                                    <div class="inp">
+                                        <label for="hospitaladdr">Hospital: </label>
+                                        <div class="input-container">
+                                            <select name="hospitaladdr" id="hospitaladdr">
+                                                <option value="" selected disabled>Select a Hospital First</option>
+                                            </select><br><br>
+                                        </div>
                                     </div>
+                                    <div class="inp">
+                                        <label for="name">Test Name: </label>
+                                        <div class="input-container">
+                                            <input type="text" name="name" required/><br><br>
+                                        </div>
+                                    </div>
+                                    <div class="inp">
+                                        <label for="fee">Fee: </label>
+                                        <div class="input-container">
+                                            <input type="number" name="fee" required/><br><br>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="formsubmit" value="Submit"/>
+                                </form>
+                                <div class="msg">
+                                    <p><?php echo $message; ?></p>
                                 </div>
-								<div class="inp">
-                                    <label for="hospitalname">Hospital: </label>
-                                    <div class="input-container">
-										<select name="hospitalname" id="hospitalname">
-											<?php
-												require_once('../php_scripts/connect.php');
-												$sql2 = 'SELECT name FROM hospital';
-												$output = $conn->query($sql2);
-												if ($output->num_rows > 0) {
-													while ($r = $output->fetch_assoc()) {
-														$hospitalname = $r["name"];
-														echo "<option value='" . $hospitalname . "'>" . $hospitalname . "</option>";
-													}
-												} else {
-													echo "<option>No Hospitals Available</option>";
-												}
-												$conn->close();
-											?>
-										</select><br><br>
-                                </div>
-                                </div>
-                                <input type="submit" class="formsubmit" value="Submit"/>
-                            </form>
-                            <div class="msg">
-                                <p><?php echo $message; ?></p>
-                            </div>
+                        </div>
                     </article>
                 </div>
 

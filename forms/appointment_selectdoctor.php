@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/forms.css">
     <link rel="stylesheet" href="../styles/select.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/artboard_1_9X7_icon.ico" />
+    <script src="../scripts/script.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
                 <article class="article-one">
                     <h1>Making an Appointment</h1>
                     <div class="formwrap">
-                        <form action="../php_scripts/appointmentscript.php" method="post" class="form" id="appointmentForm">
+                        <form action="../php_scripts/appointmentscript.php" method="post" class="form" id="appointmentForm" onsubmit="return validatedoctorform();">
                             <input type="hidden" name="patient_id" value="<?php echo $_POST['patient_id']; ?>">
                             <input type="hidden" name="selected_test" value="<?php echo $_POST['selected_test']; ?>">
                             <input type="hidden" name="selected_hospital" value="<?php echo $_POST['hospital']; ?>">
