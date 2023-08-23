@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Healthcare</title>
     <link rel="stylesheet" href="styles/main_style.css">
-    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/hospital_list.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
-    <script src="scripts/greeting_script.js"></script>
 </head>
 
-<body onload="updateGreeting()">
+<body>
     <div class="container">
         <div class="main-content">
             <header class="header-main">
@@ -23,24 +22,29 @@
                     </nav>
                 </div>
             </header>
-            
         </div>
         <main>
-            <div class="home-page">
-                <div class="image-holder">
-                    <div class="greet">
-                        <h2 id="greeting">Greetings</h2>
-                        <p>Hello there, would you like to make an appointment today?</p>
-                        <a href="forms/appointment_selecttest.php"><button>Make an Appointment</button></a>
-                        <a href="our_hospitals.php"><button>Check out our hospitals</button></a>
-                    </div>
-                    <img class="image" src="assets/hospimg.jpg" alt="hospital image">
-                </div>
-                <div style="margin-top: 10px;" class="image-holder">
-                    <img class="image" src="assets/5230819.jpg" alt="doctors">
-                </div>
-            </div>
+            <div class="hospitals-list">
+                <?php
+                    require_once('php_scripts/connect.php');
+                    $sql = "SELECT name, address, contact FROM hospital";
+                    $result = $conn->query($sql);
 
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<div class="hospital-box">';
+                            echo '<h3>' . $row["name"] . '</h3>';
+                            echo '<p>Address: ' . $row["address"] . '</p>';
+                            echo '<p>Contact: ' . $row["contact"] . '</p>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "No Hospitals found.";
+                    }
+
+                    $conn->close();
+                ?>
+            </div>
         </main>
 
         <footer style="opacity: 100%; border-radius: 0;" class="footer-main">
@@ -52,10 +56,8 @@
             </div>
         </footer>
 
-    </div><!--container-->
+
+
+    
 
 </body>
-
-
-
-</html>

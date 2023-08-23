@@ -15,7 +15,7 @@
             <header class="header-main">
                 <div class="wrapper">
                     <section class="logo">
-                        <h1>Healthcare Appointment System</h1>
+                        <h1 class="header-title">Healthcare Appointment System</h1>
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>

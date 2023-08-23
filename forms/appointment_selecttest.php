@@ -47,7 +47,7 @@
                                 <input type="hidden" name="patient_id" value="<?php echo $session_id; ?>">
                             </div>
                             <div>
-                                <label for="test">Test: </label>
+                                <label for="test">Service: </label>
                                 <div class="input-container">
                                     <select name="test" id="test">
                                         <?php

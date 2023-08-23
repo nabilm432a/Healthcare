@@ -25,6 +25,7 @@
             <main>
                 <article class="article-one">
                     <h1>Enter your details: </h1>
+                    <p>You need to have an account and log in to make an appointment</p>
                     <div class="doctorform">
                         <div class="formwrap">
                             <form action="../php_scripts/patient_loginscript.php" method="post" class="form">
