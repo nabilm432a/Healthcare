@@ -56,7 +56,7 @@
             <div class="wrapper">
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
-                    <a href="#">Hospitals</a>
+					<a href="credits.php">About Us</a>
                 </nav>
             </div>
         </footer>

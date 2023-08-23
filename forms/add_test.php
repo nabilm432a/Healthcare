@@ -41,10 +41,31 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                     </div>
                                 </div>
                                 <div class="inp">
-                                    <label for="age">Fee: </label>
+                                    <label for="fee">Fee: </label>
                                     <div class="input-container">
                                         <input type="number" name="fee" required/><br><br>
                                     </div>
+                                </div>
+								<div class="inp">
+                                    <label for="hospitalname">Hospital: </label>
+                                    <div class="input-container">
+										<select name="test" id="test">
+											<?php
+												require_once('../php_scripts/connect.php');
+												$sql2 = 'SELECT name FROM hospital';
+												$output = $conn->query($sql2);
+												if ($output->num_rows > 0) {
+													while ($r = $output->fetch_assoc()) {
+														$hospitalname = $r["name"];
+														echo "<option value='" . $hospitalname . "'>" . $hospitalname . "</option>";
+													}
+												} else {
+													echo "<option>No Hospitals Available</option>";
+												}
+												$conn->close();
+											?>
+										</select><br><br>
+                                </div>
                                 </div>
                                 <input type="submit" class="formsubmit" value="Submit"/>
                             </form>
@@ -62,7 +83,6 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
                     <a href="credits.php">About Us</a>
-                    <a href="#">Hospitals</a>
                 </nav>
             </div>
         </footer>

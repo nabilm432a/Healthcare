@@ -44,7 +44,6 @@
             <div class="wrapper">
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
-                    <a href="#">Hospitals</a>
                 </nav>
             </div>
         </footer>

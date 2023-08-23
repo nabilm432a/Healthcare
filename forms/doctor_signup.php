@@ -97,7 +97,6 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
                     <a href="../credits.php">About Us</a>
-                    <a href="#">Hospitals</a>
                 </nav>
             </div>
         </footer>

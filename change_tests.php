@@ -41,7 +41,9 @@
                                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
                                     $deleteId = $_POST["delete"];
                                     $deleteSql = "DELETE FROM test WHERE Name = '$deleteId'";
+									$deleteassoc = "DELETE FROM hospital_test WHERE test_name='$deleteId'";
                                     if ($conn->query($deleteSql) === TRUE) {
+										$conn->query($deleteassoc);
                                         echo "Record deleted successfully.";
                                     } else {
                                         echo "Error deleting record: ";
@@ -82,7 +84,6 @@
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
                     <a href="credits.php">About Us</a>
-                    <a href="#">Hospitals</a>
                 </nav>
             </div>
         </footer>
