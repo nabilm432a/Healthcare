@@ -88,8 +88,9 @@
                                 </div>
                             </div>
                             <a href="forms/appointment_selecttest.php"><button type="button" id="app">Make an Appointment</button></a>
-                            <a href="php_scripts/delete_patient.php"><button style="color: red;" type="button" id="app">Delete Account</button></a>
-                            <a href="#"><button type="button" id="showButton" onclick="showForm()">Update Contact</button></a>
+                            <a href="check_patient_appointments.php"><button type="button" id="app">Check Appointments</button></a>
+                            <a href="php_scripts/delete_patient.php"><button style="color: red; height: 50px; width:150px;" type="button" id="app">Delete Account</button></a>
+                            <a href="#"><button style="height: 50px; width:150px;" type="button" id="showButton" onclick="showForm()">Update Contact</button></a>
                             <div style="display:none; margin-top: 50px;" id="formContainer" class="form-container">
                                 <form action="php_scripts/update_patient_contact.php" method="post">
                                     <input type="tel" name="new_contact" pattern="[0-9]{11}" maxlength="11" required placeholder="Enter new contact">
