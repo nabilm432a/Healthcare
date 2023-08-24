@@ -7,8 +7,13 @@
     $selectedDoctorId = $_POST['doctor'];
 
     $selectedtest = $_POST['selected_test'];
+    $presql = "SELECT start_time FROM doctor where id=$selectedDoctorId";
+	$pre_result = $conn->query($presql);
+	if ($pre_result->num_rows>0) {
+		$one = $pre_result->fetch_assoc();
+		$time = $one['start_time'];
+	}
     
-    $time = $_POST['app_time'];
 
 	$hospital = $_POST['selected_hospital'];
 	
@@ -30,10 +35,11 @@
 				$fee = $row["fee"];
 			}
 			$sql = "INSERT IGNORE INTO appointment VALUES ($patientId, $selectedDoctorId, '$selectedtest', $fee, '$time', 'No', '$hospital')";
-
+			$sql2 = "UPDATE doctor set start_time = DATE_ADD(start_time, INTERVAL 30 MINUTE)";
 			if ($conn->query($sql)) {
 				if ($conn->affected_rows > 0) {
 					$slot_increment = "UPDATE doctor SET slot = slot + 1 where id=$selectedDoctorId";
+					$conn->query($sql2);
 					$conn->query($slot_increment);
 					$message = "Your appointment is created for $time and you owe $$fee, please reach $hospital before the appointed time";
 				} else {

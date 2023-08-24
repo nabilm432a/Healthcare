@@ -38,14 +38,15 @@
                                     <select name="doctor" id="doctor">
                                         <?php
                                             require_once('../php_scripts/connect.php');
+                                            
                                             $hospitalname = $_POST['hospital'];
-                                            $sql1 = "SELECT doctor_id FROM doctor_works_at where hospital_name = '$hospitalname'";
-                                            $d_id_result = $conn->query($sql1);
-                                            $d_id_row = $d_id_result->fetch_assoc();
-                                            $d_id = $d_id_row["doctor_id"];
-
-                                            $sql = "SELECT id, name FROM doctor where id = '$d_id'";
+                                            
+                                            $sql = "SELECT d.id, d.name FROM doctor d
+                                                    INNER JOIN doctor_works_at dw ON d.id = dw.doctor_id
+                                                    WHERE dw.hospital_name = '$hospitalname'";
+                                            
                                             $result = $conn->query($sql);
+                                            
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {
                                                     $doctorId = $row["id"];
@@ -56,14 +57,10 @@
                                             } else {
                                                 echo "<option>No Doctors Available</option>";
                                             }
+                                            
+                                            $conn->close();
                                         ?>
                                     </select><br><br>
-                                </div>
-                            </div>
-                            <div class="inp">
-                                <label for="app_time">Time: </label>
-                                <div class="input-container">
-                                    <input type="time" name="app_time" required/><br><br>
                                 </div>
                             </div>
                             <input type="submit" class="formsubmit" value="Submit"/>

@@ -1,4 +1,4 @@
-.hospitals-list {
+.hospitals-list, .doc-list {
     width: 90%;
     height: 500px;
     margin: 0 auto;
@@ -8,7 +8,7 @@
 }
 
 
-.hospital-box {
+.hospital-box, .doc-box {
     border: 2px solid;
     padding: 20px;
     margin: 10px;

@@ -30,9 +30,12 @@
                 <div class="image-holder">
                     <div class="greet">
                         <h2 id="greeting">Greetings</h2>
-                        <p>Hello there, would you like to make an appointment today?</p>
-                        <a href="forms/patient_login.php" draggable="false"><button>Make an Appointment</button></a>
-                        <a href="our_hospitals.php" draggable="false"><button>Check out our hospitals</button></a>
+                        <p>How can we help you today?</p>
+                        <div class="button-container">
+                            <a href="forms/patient_login.php" draggable="false"><button>Make an Appointment</button></a>
+                            <a href="our_hospitals.php" draggable="false"><button>Check out our hospitals</button></a>
+                            <a href="index_doctorsearch.php" draggable="false"><button>Meet our Doctors</button></a>
+                        </div>
                     </div>
                     <img class="image" src="assets/hospimg.jpg" alt="hospital image">
                 </div>

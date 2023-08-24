@@ -27,6 +27,7 @@
                     <article class="buttongroup">
                         <header>
                             <a href="forms/add_hospital.php"><button type="button">Add Hospital</button></a>
+                            <a href="adminpage.php"><button style="margin-top:5px;" type="button">Go back</button></a>
                         </header>
                         <div class="table-container">
                             <table class="table">

@@ -24,23 +24,26 @@
             </header>
         </div>
         <main>
-            <a href="index.php"><- Go Back</a>
-            <div class="hospitals-list">
+            <a href="index_doctorsearch.php"><- Go Back</a>
+            <div class="doc-list">
                 <?php
                     require_once('php_scripts/connect.php');
-                    $sql = "SELECT name, address, contact FROM hospital";
+                    $specialty = $_POST['specialty'];
+                    $sql = "SELECT name, degree, specialization, contact, start_time, end_time FROM doctor where specialization='$specialty'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo '<div class="hospital-box">';
+                            echo '<div class="doc-box">';
                             echo '<h3>' . $row["name"] . '</h3>';
-                            echo '<p>Address: ' . $row["address"] . '</p>';
+                            echo '<p>Degree: ' . $row["degree"] . '</p>';
+                            echo '<p>Specialty: ' . $row["specialization"] . '</p>';
                             echo '<p>Contact: ' . $row["contact"] . '</p>';
+                            echo '<p>Available from: ' . $row["start_time"] . ' to ' . $row["end_time"] . '</p>';
                             echo '</div>';
                         }
                     } else {
-                        echo "No Hospitals found.";
+                        echo "No Doctors found.";
                     }
 
                     $conn->close();

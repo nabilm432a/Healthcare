@@ -82,7 +82,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                 </div>
                                 <input type="submit" class="formsubmit" value="Join"/>
                             </form>
-                            <a href="doctor_login.php"><button style="padding: 5px 10px; width: 100px; height: 30px; font-size: 0.6rem;">Log In</button>
+                            <a href="doctor_login.php"><button style="padding: 5px 10px; width: 100px; height: 30px; font-size: 0.6rem;">Log In</button></a>
                             <div class="msg">
                                 <p><?php echo $message; ?></p>
                             </div>

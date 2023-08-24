@@ -1,0 +1,41 @@
+.doctor-search label {
+    font-size: 2rem;
+}
+.doctor-search .input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.doctor-search select {
+    width: 60%;
+    height: 40px;
+    font-size: 16px;
+}
+.doctor-search {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+.doctor-search .search-button {
+    background-color: aquamarine;
+    padding: 1rem;
+    border: none;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    font-size: 1rem;
+    user-select: none;
+    margin-top: 20px;
+}
+
+.doctor-search .search-button:hover {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.doctor-search .search-button:active {
+    background-color: rgba(97, 97, 97, 0.482);
+}
+.greet {
+    background-image: url("../assets/v870-tang-36.jpg");
+    margin-right: 5px;
+}

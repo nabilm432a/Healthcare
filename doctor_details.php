@@ -1,6 +1,6 @@
 <?php
     session_start();
-    // Redirect to login page if not logged in
+
     if (!isset($_SESSION["id"])) {
         header("Location: forms/doctor_login.php");
         exit();
@@ -8,7 +8,6 @@
 
     require_once("php_scripts/connect.php");
 
-    // Get patient details using the authenticated patient's ID
     $id = $_SESSION["id"];
     $query = "SELECT id, name, age, degree, specialization, contact FROM doctor WHERE id = $id";
     $hospitals = array();
@@ -28,7 +27,7 @@
         $spec = $row["specialization"];
         $contact = $row["contact"];
     } else {
-        // Handle error if patient details not found
+
         $doctorId = "N/A";
         $doctorName = "N/A";
         $degree = "N/A";
@@ -100,7 +99,7 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                            <a href="#"><button type="button" id="app">Check Appointments</button></a>
+                            <a href="check_doctor_appointments.php"><button type="button" id="app">Check Appointments</button></a>
                             <a href="php_scripts/delete_doctor.php"><button style="color: red;" type="button" id="app">Delete Account</button></a>
                             <a href="#"><button type="button" id="showButton" onclick="showForm()">Update Contact</button></a>
                             <div style="display:none; margin-top: 50px;" id="formContainer" class="form-container">

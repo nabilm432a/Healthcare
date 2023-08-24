@@ -25,50 +25,58 @@
             <main>
                 <div class="wrapbox">
                     <article class="buttongroup">
-                        <header>
-                            <a href="forms/add_test.php"><button type="button">Add Test</button></a>
-                            <a href="adminpage.php"><button style="margin-top:5px;" type="button">Go back</button></a>
-                        </header>
                         <div class="table-container">
                             <table class="table">
                                 <tr>
-                                    <th class="no-select">Name</th>
-                                    <th class="no-select">Fee</th>
-                                    <th class="no-select">Actions</th>
+                                    <th class="no-select">Patient ID</th>
+                                    <th class="no-select">Service</th>
+                                    <th class="no-select">Total Charge</th>
+                                    <th class="no-select">Time</th>
+                                    <th class="no-select">Hospital</th>
+                                    <th class="no-select">Cancellation</th>
                                 </tr>
                                 <?php
+                                session_start();
+                                if (!isset($_SESSION["id"])) {
+                                    header("Location: forms/doctor_login.php");
+                                    exit();
+                                }
+                                $d_id = $_SESSION["id"];
                                 require_once("php_scripts/connect.php");
-
-                                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
-                                    $deleteId = $_POST["delete"];
-                                    $deleteSql = "DELETE FROM test WHERE Name = '$deleteId'";
-									$deleteassoc = "DELETE FROM hospital_test WHERE test_name='$deleteId'";
+                                
+                                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["patient_id"]) && isset($_POST["test_name"])) {
+                                    $deleteId = $_POST['patient_id'];
+                                    $deletetest = $_POST['test_name'];
+                                    $deleteSql = "DELETE FROM appointment WHERE doctor_id=$d_id AND patient_id=$deleteId AND test_name='$deletetest'";
                                     if ($conn->query($deleteSql) === TRUE) {
-										$conn->query($deleteassoc);
-                                        echo "Record deleted successfully.";
+                                        echo "Appointment Cancelled.";
                                     } else {
-                                        echo "Error deleting record: ";
+                                        echo "Error cancelling appointment";
                                     }
                                 }
 
-                                $sql = "SELECT * FROM test";
+                                $sql = "SELECT patient_id, test_name, total_charge, time, hospital_name FROM appointment where doctor_id=$d_id";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>" . $row["Name"] . "</td>";
-                                        echo "<td>" . '$' . $row["Fee"] . "</td>";
+                                        echo "<td>" . $row["patient_id"] . "</td>";
+                                        echo "<td>" . $row["test_name"] . "</td>";
+                                        echo "<td>" . '$' . $row["total_charge"] . "</td>";
+                                        echo "<td>" . $row["time"] . "</td>";
+                                        echo "<td>" . $row["hospital_name"] . "</td>";
                                         echo "<td>
                                                 <form method='POST'>
-                                                    <input type='hidden' name='delete' value='" . $row["Name"] . "'>
-                                                    <button type='submit'>Delete</button>
+                                                    <input type='hidden' name='patient_id' value='" . $row["patient_id"] . "'>
+                                                    <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
+                                                    <button type='submit'>Cancel</button>
                                                 </form>
                                             </td>";
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "<tr><td colspan='5'>No Tests Available.</td></tr>";
+                                    echo "<tr><td colspan='5'>No active appointments.</td></tr>";
                                 }
                                 $conn->close();
                                 ?>
