@@ -44,6 +44,15 @@ function validatehospitalform() {
   }
   return true;
 }
+function validatesearch() {
+  var selectedValue = document.getElementById("specialty").value;
+
+  if (selectedValue === "") {
+      alert("No Specialty Selected.");
+      return false;
+  }
+  return true;
+}
 $(document).ready(function() {
   $("#hospitalname").change(function() {
       var selectedHospital = $(this).val();

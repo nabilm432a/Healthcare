@@ -32,7 +32,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
             <main>
                 <div class="wrapbox">
                     <article class="article-one">
-                        <h1>Enter the information for the test: </h1>
+                        <h1>Enter the information for the Service: </h1>
                         <div class="form">
                             <div class="formwrap">
                                 <form action="../php_scripts/test_addition.php" method="post" class="form">
@@ -67,7 +67,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : '';
                                         </div>
                                     </div>
                                     <div class="inp">
-                                        <label for="name">Test Name: </label>
+                                        <label for="name">Service Name: </label>
                                         <div class="input-container">
                                             <input type="text" name="name" required/><br><br>
                                         </div>

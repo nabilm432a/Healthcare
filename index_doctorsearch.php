@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/doctor_search.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/artboard_1_9X7_icon.ico" />
     <script src="scripts/greeting_script.js"></script>
+    <script src="scripts/script.js"></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
                     <div class="greet">
                         <p style="padding:0.6rem; margin-left: 20px; background-color: rgb(119, 213, 203); border-radius:8px; width:40%; color:white;">What Specialty do you seek?</p>
                         <div class="doctor-search">
-                            <form action="our_doctors.php" method="post" class="form">
+                            <form action="our_doctors.php" method="post" class="form" onsubmit="return validatesearch()">
                                 <div class="input">
                                     <label style="margin-bottom: 50px;" for="specialty">Select a Specialty:</label>
                                     <select name="specialty" id="specialty">
@@ -46,8 +47,6 @@
                                                     $sp = $rows['specialization'];
                                                     echo "<option value'" . $sp . "'>" . $sp . "</option>";
                                                 }
-                                            } else {
-                                                echo "<option>No Specialties Available</option>";
                                             }
                                         ?>
                                     </select>

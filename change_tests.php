@@ -26,7 +26,7 @@
                 <div class="wrapbox">
                     <article class="buttongroup">
                         <header>
-                            <a href="forms/add_test.php"><button type="button">Add Test</button></a>
+                            <a href="forms/add_test.php"><button type="button">Add Service</button></a>
                             <a href="adminpage.php"><button style="margin-top:5px;" type="button">Go back</button></a>
                         </header>
                         <div class="table-container">

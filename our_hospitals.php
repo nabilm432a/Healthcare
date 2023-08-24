@@ -33,10 +33,25 @@
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
+                            $hospital_name = $row['name'];
+                            $hospital_address = $row['address'];
+                            $sql2 = "SELECT test_name FROM hospital_test WHERE hospital_name = '$hospital_name' AND hospital_address = '$hospital_address'";
+                            $sql2result = $conn->query($sql2);
+
                             echo '<div class="hospital-box">';
                             echo '<h3>' . $row["name"] . '</h3>';
                             echo '<p>Address: ' . $row["address"] . '</p>';
                             echo '<p>Contact: ' . $row["contact"] . '</p>';
+                            echo '<p>Provided Tests</p>';
+                            echo '<ul>';
+                            if ($sql2result->num_rows > 0) {
+                                while ($row2 = $sql2result->fetch_assoc()) {
+                                    echo '<li>' . $row2["test_name"] . '</li>';
+                                }
+                            } else {
+                                echo '<li>No tests available for this hospital.</li>';
+                            }
+                            echo '</ul>';
                             echo '</div>';
                         }
                     } else {
