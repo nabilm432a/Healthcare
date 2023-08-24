@@ -40,10 +40,10 @@
                                 <?php
                                 require_once("php_scripts/connect.php");
 
-                                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
+                                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name_key"])) {
                                     $deletename = $_POST["name_key"];
                                     $deleteaddr = $_POST['address_key'];
-                                    $deleteSql = "DELETE FROM hospital WHERE Name = '$deleteId' and Address = '$deleteaddr'";
+                                    $deleteSql = "DELETE FROM hospital WHERE Name = '$deletename' and Address = '$deleteaddr'";
                                     if ($conn->query($deleteSql) === TRUE) {
                                         echo "Record deleted successfully.";
                                     } else {
