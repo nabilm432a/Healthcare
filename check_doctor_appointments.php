@@ -28,12 +28,13 @@
                         <div class="table-container">
                             <table class="table">
                                 <tr>
-                                    <th class="no-select">Patient ID</th>
+                                    <th class="no-select">Patient Name</th>
                                     <th class="no-select">Service</th>
                                     <th class="no-select">Total Charge</th>
+                                    <th class="no-select">Payment Status</th>
                                     <th class="no-select">Time</th>
                                     <th class="no-select">Hospital</th>
-                                    <th class="no-select">Cancellation</th>
+                                    <th class="no-select">Actions</th>
                                 </tr>
                                 <?php
                                 session_start();
@@ -55,24 +56,35 @@
                                     }
                                 }
 
-                                $sql = "SELECT patient_id, test_name, total_charge, time, hospital_name FROM appointment where doctor_id=$d_id";
+                                $sql = "SELECT patient_id, patient.name as p_name, test_name, total_charge, payment_status, time, hospital_name FROM appointment JOIN patient ON appointment.patient_id=patient.id WHERE doctor_id=$d_id";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>" . $row["patient_id"] . "</td>";
+                                        echo "<td>" . $row["p_name"] . "</td>";
                                         echo "<td>" . $row["test_name"] . "</td>";
                                         echo "<td>" . '$' . $row["total_charge"] . "</td>";
+                                        echo "<td>" . $row["payment_status"] . "</td>";
                                         echo "<td>" . $row["time"] . "</td>";
                                         echo "<td>" . $row["hospital_name"] . "</td>";
-                                        echo "<td>
-                                                <form method='POST'>
-                                                    <input type='hidden' name='patient_id' value='" . $row["patient_id"] . "'>
-                                                    <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
-                                                    <button type='submit'>Cancel</button>
-                                                </form>
-                                            </td>";
+                                        if ($row['payment_status']==="No") {
+                                            echo "<td>
+                                                    <form method='POST'>
+                                                        <input type='hidden' name='patient_id' value='" . $row["patient_id"] . "'>
+                                                        <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
+                                                        <button type='submit'>Cancel</button>
+                                                    </form>
+                                                </td>";
+                                        } else {
+                                            echo "<td>
+                                                    <form method='POST'>
+                                                        <input type='hidden' name='patient_id' value='" . $row["patient_id"] . "'>
+                                                        <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
+                                                        <button type='submit'>Delete</button>
+                                                    </form>
+                                                </td>";
+                                        }
                                         echo "</tr>";
                                     }
                                 } else {
