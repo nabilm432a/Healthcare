@@ -19,6 +19,7 @@
                         </section>
                         <nav class="nav-horizontal" id="topnav">
                             <a href="../index.php">Home</a>
+                            <a href="check_patient_appointments.php">Back</a>
                         </nav>
                     </div>
                 </header>

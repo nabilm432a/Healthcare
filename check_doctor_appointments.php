@@ -19,6 +19,7 @@
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
+                        <a href="doctor_details.php">Back</a>
                     </nav>
                 </div>
             </header>
