@@ -28,12 +28,13 @@
                         <div class="table-container">
                             <table class="table">
                                 <tr>
-                                    <th class="no-select">Doctor ID</th>
+                                    <th class="no-select">Doctor Name</th>
                                     <th class="no-select">Service</th>
                                     <th class="no-select">Total Charge</th>
+                                    <th class="no-select">Payment Status</th>
                                     <th class="no-select">Time</th>
                                     <th class="no-select">Hospital</th>
-                                    <th class="no-select">Cancellation</th>
+                                    <th class="no-select">Actions</th>
                                 </tr>
                                 <?php
                                 session_start();
@@ -55,24 +56,42 @@
                                     }
                                 }
 
-                                $sql = "SELECT doctor_id, test_name, total_charge, time, hospital_name FROM appointment where patient_id=$p_id";
+                                $sql = "SELECT doctor_id, doctor.name as d_name, test_name, total_charge, payment_status, time, hospital_name FROM appointment JOIN doctor ON appointment.doctor_id=doctor.id WHERE patient_id=$p_id";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>" . $row["doctor_id"] . "</td>";
+                                        echo "<td>" . $row["d_name"] . "</td>";
                                         echo "<td>" . $row["test_name"] . "</td>";
                                         echo "<td>" . '$' . $row["total_charge"] . "</td>";
+                                        echo "<td>" . $row["payment_status"] . "</td>";
                                         echo "<td>" . $row["time"] . "</td>";
                                         echo "<td>" . $row["hospital_name"] . "</td>";
-                                        echo "<td>
-                                                <form method='POST'>
-                                                    <input type='hidden' name='patient_id' value='" . $row["doctor_id"] . "'>
-                                                    <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
-                                                    <button type='submit'>Cancel</button>
-                                                </form>
-                                            </td>";
+                                        if ($row['payment_status']==='No') {
+                                            echo "<td>
+                                                    <form method='POST'>
+                                                        <input type='hidden' name='doctor_id' value='" . $row["doctor_id"] . "'>
+                                                        <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
+                                                        <button type='submit'>Cancel</button>
+                                                    </form>
+                                                    <form action='forms/payment_form.php' method='POST'>
+                                                        <input type='hidden' name='patient_id' value='" . $p_id . "'>
+                                                        <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
+                                                        <input type='hidden' name='doctor_id' value='" . $row["doctor_id"] . "'>
+                                                        <input type='hidden' name='total_charge' value='" . $row["total_charge"] . "'>
+                                                        <button type='submit' name='pay'>Pay</button>
+                                                    </form>
+                                                </td>";
+                                        } else {
+                                            echo "<td>
+                                                    <form method='POST'>
+                                                        <input type='hidden' name='doctor_id' value='" . $row["doctor_id"] . "'>
+                                                        <input type='hidden' name='test_name' value='" . $row["test_name"] . "'>
+                                                        <button type='submit'>Delete</button>
+                                                    </form>
+                                                </td>";
+                                        }
                                         echo "</tr>";
                                     }
                                 } else {

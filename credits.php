@@ -19,7 +19,7 @@
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
-                        <a href="forms/adminlogin.php">Admin Log in</a>
+                        <a href="forms/adminlogin.php">Admin</a>
                     </nav>
                 </div>
             </header>
