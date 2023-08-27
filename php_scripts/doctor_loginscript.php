@@ -12,6 +12,7 @@
     if ($result->num_rows == 1) {
         // Successful login
         $_SESSION["id"] = $id;
+        $_SESSION["user_type"] = "doctor";
         header("Location: ../doctor_details.php");
         exit();
     } else {

@@ -59,7 +59,7 @@
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
-                        <a href="login.php">Log out</a>
+                        <a href="php_scripts/logout.php">Log out</a>
                     </nav>
                 </div>
             </header>

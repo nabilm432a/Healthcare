@@ -10,16 +10,16 @@
     $result = $conn->query($query);
 
     if ($result->num_rows == 1) {
-        // Successful login
+
         $_SESSION["id"] = $id;
+        $_SESSION["user_type"] = "patient";
         header("Location: ../patient_details.php");
         exit();
     } else {
-        // Invalid credentials
+
         $error = "Invalid ID or password.";
     }
 
-    $conn->close();
 ?>
 
 </body>

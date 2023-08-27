@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +24,11 @@
                     </section>
                     <nav class="nav-horizontal" id="topnav">
                         <a href="index.php">Home</a>
-                        <a href="forms/adminlogin.php">Admin</a>
+                        <?php
+                            if (!isset($_SESSION["id"])) {
+                                echo "<a href='forms/adminlogin.php'>Admin</a>";
+                            }
+                        ?>
                     </nav>
                 </div>
             </header>

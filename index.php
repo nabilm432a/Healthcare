@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,18 @@
                         <h1 class="header-title">Healthcare Appointment System</h1>
                     </section>
                     <nav class="nav-horizontal" id="topnav">
-                        <a href="login.php">Login</a>
+                        <?php
+                            if (isset($_SESSION["id"])) {
+                                echo '<a href="php_scripts/logout.php">Logout</a>';
+                                if ($_SESSION["user_type"] === "doctor") {
+                                    echo '<a href="doctor_details.php">Check details</a>';
+                                } elseif ($_SESSION["user_type"] === "patient") {
+                                    echo '<a href="patient_details.php">Check details</a>';
+                                }
+                            } else {
+                                echo '<a href="login.php">Login</a>';
+                            }
+                        ?>
                     </nav>
                 </div>
             </header>
@@ -32,7 +47,11 @@
                         <h2 id="greeting">Greetings</h2>
                         <p>How can we help you today?</p>
                         <div class="button-container">
-                            <a href="forms/patient_login.php" draggable="false"><button>Make an Appointment</button></a>
+                            <?php
+                            if (!isset($_SESSION["user_type"]) || $_SESSION["user_type"] != "doctor") {
+                                echo '<a href="forms/appointment_selecttest.php" draggable="false"><button>Make an Appointment</button></a>';
+                            }
+                            ?>
                             <a href="our_hospitals.php" draggable="false"><button>Check out our hospitals</button></a>
                             <a href="index_doctorsearch.php" draggable="false"><button>Meet our Doctors</button></a>
                         </div>
