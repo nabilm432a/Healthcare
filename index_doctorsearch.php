@@ -58,9 +58,6 @@
                     </div>
                     <img class="image" src="assets/hospimg.jpg" alt="hospital image">
                 </div>
-                <div style="margin-top: 10px;" class="image-holder">
-                    <img class="image" src="assets/5230819.jpg" alt="doctors">
-                </div>
             </div>
 
         </main>

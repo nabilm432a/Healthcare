@@ -51,7 +51,7 @@
             </div>
         </main>
 
-        <footer style="opacity: 100%; border-radius: 0;" class="footer-main">
+        <footer style="border-radius: 0;" class="footer-main">
             <div class="wrapper">
                 <p>CSE370: Database Systems</p>
                 <nav class="nav-horizontal">
