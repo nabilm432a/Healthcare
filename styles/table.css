@@ -32,6 +32,14 @@
     background-color: white;
     color: black;
 }
+
+.patienttable tbody {
+    display: block;
+    position: relative;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
 .patienttable tr td {
     margin: auto;
     width: 30%;

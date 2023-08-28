@@ -38,11 +38,14 @@
                                 </tr>
                                 <?php
                                 require_once("php_scripts/connect.php");
-
+                                // Check if Post method is called and if namekey has been posted
                                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
+                                    // get the name and address
                                     $deleteId = $_POST["delete"];
+                                    // store the query
                                     $deleteSql = "DELETE FROM test WHERE Name = '$deleteId'";
 									$deleteassoc = "DELETE FROM hospital_test WHERE test_name='$deleteId'";
+                                    // run query
                                     if ($conn->query($deleteSql) === TRUE) {
 										$conn->query($deleteassoc);
                                         echo "Record deleted successfully.";

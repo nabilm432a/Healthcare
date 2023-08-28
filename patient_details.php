@@ -8,7 +8,6 @@
 
     require_once("php_scripts/connect.php");
 
-    // Get patient details using the authenticated patient's ID
     $id = $_SESSION["id"];
     $query = "SELECT id, name, age, gender, bloodgroup, contact FROM patient WHERE id = $id";
     $result = $conn->query($query);
@@ -22,7 +21,7 @@
         $bloodGroup = $row["bloodgroup"];
         $contact = $row["contact"];
     } else {
-        // Handle error if patient details not found
+        // if patient details not found
         $patientId = "N/A";
         $patientName = "N/A";
         $age = "N/A";
