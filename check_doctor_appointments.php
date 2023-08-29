@@ -38,6 +38,7 @@
                                     <th class="no-select">Actions</th>
                                 </tr>
                                 <?php
+                                $currentDate = date("F d, Y");
                                 session_start();
                                 if (!isset($_SESSION["id"])) {
                                     header("Location: forms/doctor_login.php");
@@ -59,7 +60,7 @@
 
                                 $sql = "SELECT patient_id, patient.name as p_name, test_name, total_charge, payment_status, time, hospital_name FROM appointment JOIN patient ON appointment.patient_id=patient.id WHERE doctor_id=$d_id";
                                 $result = $conn->query($sql);
-
+                                echo "Appointments for " . $currentDate;
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";

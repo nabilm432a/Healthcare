@@ -28,6 +28,7 @@
                         <header>
                             <a href="change_tests.php"><button type="button">Services</button></a>
                             <a href="change_hospitals.php"><button type="button">Hospitals</button></a>
+                            <a href="admin_appointments.php"><button type="button">Check Completed Appointments</button></a>
                         </header>
                     </article>
                 </div>
