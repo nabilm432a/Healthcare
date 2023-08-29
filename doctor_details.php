@@ -128,7 +128,6 @@
                             <div class="fullform" id="hospitalemployment">
                                 <div class="formwrap">
                                     <form action="php_scripts/hopsitaljoin.php" method="post" class="form">
-                                        <option value="" disabled selected>Select a Hospital</option>
                                         <div class="inp">
                                             <label for="hospital">Select a hospital to join: </label>
                                             <div class="input-container">
